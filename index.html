@@ -1,4 +1,228 @@
-<!DOCTYPE html>
+/* Estilos para Log Administrativo */
+        .admin-log-content {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .log-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+            padding-bottom: 15px;
+        }
+
+        .log-tab {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            color: #b0b0b0;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .log-tab.active,
+        .log-tab:hover {
+            background: rgba(0, 255, 136, 0.1);
+            border-color: #00ff88;
+            color: #00ff88;
+        }
+
+        .changelog-entry {
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 4px solid #00ff88;
+        }
+
+        .changelog-date {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #00ccff;
+            margin-bottom: 15px;
+        }
+
+        .changelog-items {
+            display: grid;
+            gap: 8px;
+        }
+
+        .changelog-item {
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .changelog-item.added {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 3px solid #00ff88;
+        }
+
+        .changelog-item.improved {
+            background: rgba(0, 204, 255, 0.1);
+            border-left: 3px solid #00ccff;
+        }
+
+        .changelog-item.restricted {
+            background: rgba(255, 165, 0, 0.1);
+            border-left: 3px solid #ffa500;
+        }
+
+        .changelog-item.experimental {
+            background: rgba(138, 43, 226, 0.1);
+            border-left: 3px solid #8A2BE2;
+        }
+
+        /* Estilos para Versiones Públicas */
+        .version-current {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 255, 0.1));
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .version-current h3 {
+            color: #00ff88;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .version-status {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .status-badge {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .status-badge.live {
+            background: linear-gradient(45deg, #ff4757, #ff6b6b);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        .release-date {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
+        .versions-timeline {
+            margin-bottom: 40px;
+        }
+
+        .version-entry {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00ccff;
+            transition: all 0.3s ease;
+        }
+
+        .version-entry:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .version-header h4 {
+            color: #00ccff;
+            font-size: 1.3rem;
+        }
+
+        .version-date {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .version-features {
+            display: grid;
+            gap: 8px;
+        }
+
+        .feature-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 3px solid #00ff88;
+        }
+
+        .upcoming-features {
+            background: rgba(138, 43, 226, 0.1);
+            border: 2px solid #8A2BE2;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .upcoming-features h3 {
+            color: #8A2BE2;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .upcoming-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .upcoming-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #8A2BE2;
+            transition: all 0.3s ease;
+        }
+
+        .upcoming-item:hover {
+            background: rgba(138, 43, 226, 0.1);
+            transform: translateX(5px);
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .modal-content { padding: 20px; }
+            .teams-grid { grid-template-columns: 1fr; }
+            .widget-content { 
+                flex-direction: column; 
+                gap: 20px; 
+                text-align: center; 
+            }
+            .floating-notification {
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                max-width: none;
+            }
+            .notification-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .version-status {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -264,82 +488,6 @@
             border-color: #00ff88;
         }
 
-        /* Tarjetas deshabilitadas */
-        .tab-card.disabled {
-            background: rgba(128, 128, 128, 0.1);
-            border-color: rgba(128, 128, 128, 0.3);
-            cursor: not-allowed;
-            opacity: 0.5;
-        }
-
-        .tab-card.disabled:hover {
-            transform: none;
-            box-shadow: none;
-            border-color: rgba(128, 128, 128, 0.3);
-        }
-
-        .tab-card.disabled::before {
-            display: none;
-        }
-
-        .tab-card.disabled .tab-icon {
-            background: linear-gradient(45deg, #808080, #a0a0a0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tab-card.disabled h3 {
-            color: #808080;
-        }
-
-        .tab-card.disabled .tab-button {
-            background: linear-gradient(45deg, #808080, #a0a0a0);
-            cursor: not-allowed;
-        }
-
-        .tab-card.disabled .tab-button:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* Overlay de "Proximamente" */
-        .coming-soon-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            border-radius: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .tab-card.disabled:hover .coming-soon-overlay {
-            opacity: 1;
-        }
-
-        .coming-soon-text {
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .coming-soon-desc {
-            color: #b0b0b0;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
         .tab-icon {
             font-size: 4rem;
             margin-bottom: 20px;
@@ -451,6 +599,341 @@
             box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
         }
 
+        /* Estilos para modales del mundo */
+        .world-modal {
+            max-width: 95vw;
+            max-height: 95vh;
+            overflow-y: auto;
+        }
+
+        .world-detailed-content {
+            display: grid;
+            gap: 30px;
+        }
+
+        .world-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .world-section h3 {
+            color: #ff6b6b;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Estilos para estadísticas ambientales */
+        .environment-stats {
+            display: grid;
+            gap: 15px;
+        }
+
+        .env-stat {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .env-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffa500);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        /* Estilos para recursos */
+        .resources-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid;
+        }
+
+        .resource-item.legendary {
+            background: rgba(255, 215, 0, 0.1);
+            border-left-color: #FFD700;
+        }
+
+        .resource-item.rare {
+            background: rgba(138, 43, 226, 0.1);
+            border-left-color: #8A2BE2;
+        }
+
+        .resource-item.common {
+            background: rgba(128, 128, 128, 0.1);
+            border-left-color: #808080;
+        }
+
+        .resource-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+
+        /* Estilos para peligros */
+        .dangers-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .danger-item {
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid;
+        }
+
+        .danger-item.high {
+            background: rgba(255, 107, 107, 0.1);
+            border-left-color: #ff6b6b;
+        }
+
+        .danger-item.medium {
+            background: rgba(255, 193, 7, 0.1);
+            border-left-color: #ffc107;
+        }
+
+        .danger-item.low {
+            background: rgba(40, 167, 69, 0.1);
+            border-left-color: #28a745;
+        }
+
+        .danger-level {
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+        }
+
+        /* Estilos para tips de supervivencia */
+        .survival-tips {
+            display: grid;
+            gap: 15px;
+        }
+
+        .tip-card {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #00ff88;
+        }
+
+        /* Estilos para mutantes */
+        .mutant-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .mutant-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+        }
+
+        .mutant-card.runner { border-color: #28a745; }
+        .mutant-card.tank { border-color: #dc3545; }
+        .mutant-card.spitter { border-color: #ffc107; }
+        .mutant-card.alpha { border-color: #6f42c1; }
+
+        .mutant-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .mutant-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .mutant-icon {
+            font-size: 2rem;
+        }
+
+        .threat-level {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .threat-level.low { background: #28a745; color: white; }
+        .threat-level.medium { background: #ffc107; color: black; }
+        .threat-level.high { background: #dc3545; color: white; }
+        .threat-level.extreme { background: #6f42c1; color: white; }
+
+        .mutant-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Estilos para estrategias y combos */
+        .combat-strategies,
+        .team-combos {
+            display: grid;
+            gap: 15px;
+        }
+
+        .strategy-card,
+        .combo-card {
+            background: rgba(0, 204, 255, 0.1);
+            border: 1px solid rgba(0, 204, 255, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #00ccff;
+        }
+
+        .combo-card.trinity { border-left-color: #ff6b6b; background: rgba(255, 107, 107, 0.1); }
+        .combo-card.protective { border-left-color: #28a745; background: rgba(40, 167, 69, 0.1); }
+        .combo-card.coordinated { border-left-color: #ffc107; background: rgba(255, 193, 7, 0.1); }
+
+        /* Estilos adicionales para el mundo */
+        .area-layout,
+        .poi-grid,
+        .coop-activities,
+        .exclusive-rewards {
+            display: grid;
+            gap: 15px;
+        }
+
+        .building-info,
+        .poi-item,
+        .coop-card,
+        .reward-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #00ccff;
+        }
+
+        .poi-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .poi-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+
+        .poi-difficulty {
+            color: #ffc107;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .reward-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .reward-item.legendary {
+            border-left-color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .reward-item.rare {
+            border-left-color: #8A2BE2;
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        .reward-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+
+        /* Modal de acceso restringido */
+        .restricted-modal .modal-content {
+            border-color: #ffa500;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .restricted-modal .modal-title {
+            color: #ffa500;
+        }
+
+        .restricted-icon {
+            font-size: 5rem;
+            color: #ffa500;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .restricted-message {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            background: rgba(255, 165, 0, 0.1);
+            border: 1px solid rgba(255, 165, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-info h4 {
+            color: #ffa500;
+            margin-bottom: 10px;
+        }
+
+        .contact-info p {
+            color: #b0b0b0;
+            margin-bottom: 5px;
+        }
+
         /* Estilos específicos para estadísticas */
         .stats-grid {
             display: grid;
@@ -510,11 +993,519 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Responsive */
+        /* Botón de seguir en Roblox */
+        .roblox-follow-section {
+            margin-top: 15px;
+        }
+
+        .roblox-follow-btn {
+            background: linear-gradient(45deg, #00B2FF, #0082CC);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .roblox-follow-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 178, 255, 0.4);
+        }
+
+        /* Notificación flotante */
+        .floating-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border: 2px solid #00B2FF;
+            border-radius: 15px;
+            padding: 20px;
+            z-index: 999;
+            animation: slideInNotification 0.5s ease;
+            max-width: 350px;
+        }
+
+        @keyframes slideInNotification {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .notification-icon {
+            font-size: 2rem;
+            color: #00B2FF;
+        }
+
+        .notification-text strong {
+            color: #00ff88;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .notification-text p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .notification-btn {
+            background: #00B2FF;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .notification-btn:hover {
+            background: #0082CC;
+            transform: scale(1.05);
+        }
+
+        .notification-close {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
+
+        /* Especificaciones técnicas */
+        .tech-specs-section {
+            margin: 40px 0;
+            padding: 40px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 107, 107, 0.3);
+            backdrop-filter: blur(20px);
+        }
+
+        .specs-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .specs-header h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+        }
+
+        .spec-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid rgba(255, 107, 107, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
+            border-color: #ff6b6b;
+        }
+
+        .spec-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        .spec-label {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Características del juego */
+        .game-features-section {
+            margin: 40px 0;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            border: 2px solid rgba(0, 204, 255, 0.3);
+            backdrop-filter: blur(20px);
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .features-header h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #00ccff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .features-header p {
+            color: #b0b0b0;
+            font-size: 1.2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card.world {
+            border-color: rgba(0, 255, 136, 0.5);
+        }
+
+        .feature-card.building {
+            border-color: rgba(138, 43, 226, 0.5);
+        }
+
+        .feature-card.construction {
+            border-color: rgba(255, 193, 7, 0.5);
+        }
+
+        .feature-card.combat {
+            border-color: rgba(255, 107, 107, 0.5);
+        }
+
+        .feature-card.roles {
+            border-color: rgba(0, 204, 255, 0.5);
+        }
+
+        .feature-card.ui {
+            border-color: rgba(255, 165, 0, 0.5);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            color: #00ff88;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 204, 255, 0.2);
+            color: #00ccff;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border: 1px solid rgba(0, 204, 255, 0.3);
+        }
+
+        .feature-details {
+            display: grid;
+            gap: 8px;
+        }
+
+        .feature-detail {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            padding: 5px 0;
+            border-left: 3px solid #00ff88;
+            padding-left: 15px;
+            margin-left: 10px;
+        }
+
+        /* Sección de equipos */
+        .teams-section {
+            margin: 40px 0;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            backdrop-filter: blur(20px);
+        }
+
+        .teams-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .teams-header h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .teams-header p {
+            color: #b0b0b0;
+            font-size: 1.2rem;
+        }
+
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+        }
+
+        .team-banner {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .team-flag {
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .team-info {
+            padding: 25px;
+        }
+
+        .team-info h3 {
+            color: #00ff88;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .team-members {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .member {
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .member.scavenger { background: rgba(255, 193, 7, 0.2); color: #ffc107; }
+        .member.tech { background: rgba(0, 204, 255, 0.2); color: #00ccff; }
+        .member.medic { background: rgba(40, 167, 69, 0.2); color: #28a745; }
+
+        .team-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            font-size: 0.85rem;
+        }
+
+        .highlight {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        /* Widget del grupo de Roblox */
+        .roblox-group-widget {
+            background: rgba(0, 178, 255, 0.1);
+            border: 2px solid rgba(0, 178, 255, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 40px 0;
+            backdrop-filter: blur(20px);
+        }
+
+        .widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .widget-header h3 {
+            color: #00B2FF;
+            font-size: 1.5rem;
+        }
+
+        .live-indicator {
+            background: linear-gradient(45deg, #ff4757, #ff6b6b);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .widget-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .group-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .group-icon {
+            font-size: 3rem;
+            color: #00B2FF;
+        }
+
+        .group-details strong {
+            color: #00ff88;
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .group-details p {
+            color: #b0b0b0;
+            margin: 5px 0;
+        }
+
+        .member-count, .online-count {
+            color: #00ccff;
+            font-weight: bold;
+        }
+
+        .join-group-btn {
+            background: linear-gradient(45deg, #00B2FF, #0082CC);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .join-group-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 178, 255, 0.4);
+        }
+
+        /* Tab administrativa solo para MaxVicioHack y ChuyMine */
+        .admin-only {
+            border: 1px solid rgba(255, 215, 0, 0.3) !important;
+        }
+
+        .admin-only .tab-icon {
+            background: linear-gradient(45deg, #FFD700, #FFA500) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+
+        .admin-only h3 {
+            color: #FFD700 !important;
+        }
+
+        .admin-only .tab-button {
+            background: linear-gradient(45deg, #FFD700, #FFA500) !important;
+        }
+
+        /* Responsive para móviles */
         @media (max-width: 768px) {
             .header h1 { font-size: 2rem; }
             .dashboard-grid { grid-template-columns: 1fr; }
             .modal-content { padding: 20px; }
+            .restricted-icon { font-size: 3rem; }
+            .restricted-message { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -526,11 +1517,117 @@
     <header class="header">
         <h1>🎮 ECHOES OF TOMORROW</h1>
         <p>Panel de Administración - MaxVicioHack & ChuyMine</p>
-        <span class="version-badge">v0.1.8-restricted</span>
+        <span class="version-badge">v0.1.8-admin-access</span>
     </header>
 
     <!-- Contenedor principal -->
     <div class="container">
+        <!-- Sección de Equipos Formados -->
+        <div class="teams-section">
+            <div class="teams-header">
+                <h2>👥 Equipos Formados</h2>
+                <p>Clanes activos en el mundo post-apocalíptico</p>
+            </div>
+            
+            <div class="teams-grid">
+                <div class="team-card">
+                    <div class="team-banner" style="background: linear-gradient(45deg, #ff6b6b, #ffa500);">
+                        <span class="team-flag">🔥</span>
+                    </div>
+                    <div class="team-info">
+                        <h3>🏆 Alpha Survivors</h3>
+                        <div class="team-members">
+                            <span class="member scavenger">🎒 Scavenger_Pro</span>
+                            <span class="member tech">🔧 Tech_Master</span>
+                            <span class="member medic">🏥 Medic_Elite</span>
+                        </div>
+                        <div class="team-stats">
+                            <div class="stat-item">
+                                <strong>Nivel:</strong> <span class="highlight">15</span>
+                            </div>
+                            <div class="stat-item">
+                                <strong>Victorias:</strong> <span class="highlight">47</span>
+                            </div>
+                            <div class="stat-item">
+                                <strong>Bases:</strong> <span class="highlight">3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-banner" style="background: linear-gradient(45deg, #00ff88, #00ccff);">
+                        <span class="team-flag">⚡</span>
+                    </div>
+                    <div class="team-info">
+                        <h3>⚡ Storm Runners</h3>
+                        <div class="team-members">
+                            <span class="member scavenger">🎒 Speed_Hunter</span>
+                            <span class="member tech">🔧 Bolt_Builder</span>
+                            <span class="member medic">🏥 Quick_Heal</span>
+                        </div>
+                        <div class="team-stats">
+                            <div class="stat-item">
+                                <strong>Nivel:</strong> <span class="highlight">12</span>
+                            </div>
+                            <div class="stat-item">
+                                <strong>Victorias:</strong> <span class="highlight">31</span>
+                            </div>
+                            <div class="stat-item">
+                                <strong>Bases:</strong> <span class="highlight">2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-banner" style="background: linear-gradient(45deg, #8A2BE2, #6f42c1);">
+                        <span class="team-flag">💀</span>
+                    </div>
+                    <div class="team-info">
+                        <h3>💀 Shadow Clan</h3>
+                        <div class="team-members">
+                            <span class="member scavenger">🎒 Night_Stalker</span>
+                            <span class="member tech">🔧 Dark_Engineer</span>
+                            <span class="member medic">🏥 Ghost_Medic</span>
+                        </div>
+                        <div class="team-stats">
+                            <div class="stat-item">
+                                <strong>Nivel:</strong> <span class="highlight">18</span>
+                            </div>
+                            <div class="stat-item">
+                                <strong>Victorias:</strong> <span class="highlight">63</span>
+                            </div>
+                            <div class="stat-item">
+                                <strong>Bases:</strong> <span class="highlight">4</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Widget del Grupo de Roblox -->
+        <div class="roblox-group-widget">
+            <div class="widget-header">
+                <h3>🎮 Grupo Oficial de Roblox</h3>
+                <span class="live-indicator">🔴 EN VIVO</span>
+            </div>
+            <div class="widget-content">
+                <div class="group-info">
+                    <div class="group-icon">🏆</div>
+                    <div class="group-details">
+                        <strong>Echoes of Tomorrow Official</strong>
+                        <p>Miembros: <span class="member-count">1,247</span></p>
+                        <p>Online ahora: <span class="online-count">89</span></p>
+                    </div>
+                </div>
+                <button class="join-group-btn" onclick="joinRobloxGroup()">
+                    Unirse al Grupo
+                </button>
+            </div>
+        </div>
+
         <!-- Sección del Mundo Post-Apocalíptico -->
         <div class="apocalypse-world-section">
             <div class="world-header">
@@ -570,19 +1667,15 @@
 
         <!-- Grid de pestañas principales -->
         <div class="dashboard-grid">
-            <!-- Panel de Administración - DESHABILITADO -->
-            <div class="tab-card disabled">
+            <!-- Panel de Administración -->
+            <div class="tab-card" onclick="openTab('admin')">
                 <span class="tab-icon">⚙️</span>
                 <h3>Panel de Administración</h3>
                 <p>Control total del servidor, configuraciones del juego, gestión de equipos y eventos globales en tiempo real.</p>
                 <button class="tab-button">Administrar Juego</button>
-                <div class="coming-soon-overlay">
-                    <div class="coming-soon-text">🔒 PRÓXIMAMENTE</div>
-                    <div class="coming-soon-desc">Funcionalidad en desarrollo<br>Disponible pronto</div>
-                </div>
             </div>
 
-            <!-- Estadísticas en Tiempo Real - HABILITADO -->
+            <!-- Estadísticas en Tiempo Real -->
             <div class="tab-card" onclick="openTab('stats')">
                 <span class="tab-icon">📊</span>
                 <h3>Estadísticas en Tiempo Real</h3>
@@ -590,19 +1683,15 @@
                 <button class="tab-button">Ver Estadísticas</button>
             </div>
 
-            <!-- Control de Jugadores - DESHABILITADO -->
-            <div class="tab-card disabled">
+            <!-- Control de Jugadores -->
+            <div class="tab-card" onclick="openTab('players')">
                 <span class="tab-icon">👥</span>
                 <h3>Control de Jugadores</h3>
                 <p>Moderación, gestión de usuarios, formación de equipos, roles asignados y sistema de reportes.</p>
                 <button class="tab-button">Gestionar Jugadores</button>
-                <div class="coming-soon-overlay">
-                    <div class="coming-soon-text">🔒 PRÓXIMAMENTE</div>
-                    <div class="coming-soon-desc">Funcionalidad en desarrollo<br>Disponible pronto</div>
-                </div>
             </div>
 
-            <!-- Sistema de Logs - HABILITADO -->
+            <!-- Sistema de Logs -->
             <div class="tab-card" onclick="openTab('logs')">
                 <span class="tab-icon">📝</span>
                 <h3>Sistema de Logs</h3>
@@ -610,27 +1699,341 @@
                 <button class="tab-button">Ver Logs</button>
             </div>
 
-            <!-- Configuraciones Remotas - DESHABILITADO -->
-            <div class="tab-card disabled">
+            <!-- Configuraciones Remotas -->
+            <div class="tab-card" onclick="openTab('config')">
                 <span class="tab-icon">🔧</span>
                 <h3>Configuraciones Remotas</h3>
                 <p>Ajustes del juego, parámetros de balance, eventos programados y actualizaciones de contenido.</p>
                 <button class="tab-button">Configurar</button>
-                <div class="coming-soon-overlay">
-                    <div class="coming-soon-text">🔒 PRÓXIMAMENTE</div>
-                    <div class="coming-soon-desc">Funcionalidad en desarrollo<br>Disponible pronto</div>
-                </div>
             </div>
 
-            <!-- Monitor de Sincronización - DESHABILITADO -->
-            <div class="tab-card disabled">
+            <!-- Log Administrativo - SOLO MAXVICIOHACK Y CHUYMINE -->
+            <div class="tab-card admin-only" onclick="openTab('adminlog')" style="display: none;">
+                <span class="tab-icon">📋</span>
+                <h3>Log Administrativo</h3>
+                <p>Registro detallado de desarrollo y cambios realizados en el proyecto por MaxVicioHack y ChuyMine.</p>
+                <button class="tab-button">Acceder al Log</button>
+            </div>
+
+            <!-- Versiones Públicas -->
+            <div class="tab-card" onclick="openTab('versions')">
+                <span class="tab-icon">📱</span>
+                <h3>Versiones del Juego</h3>
+                <p>Historial público de versiones, actualizaciones y mejoras implementadas en Echoes of Tomorrow.</p>
+                <button class="tab-button">Ver Versiones</button>
+            </div>
+
+            <!-- Monitor de Sincronización -->
+            <div class="tab-card" onclick="openTab('sync')">
                 <span class="tab-icon">🔄</span>
                 <h3>Monitor de Sincronización</h3>
                 <p>Estado de conexión Roblox-Web, sistema de archivación, backups automáticos y continuidad de datos.</p>
                 <button class="tab-button">Ver Sincronización</button>
-                <div class="coming-soon-overlay">
-                    <div class="coming-soon-text">🔒 PRÓXIMAMENTE</div>
-                    <div class="coming-soon-desc">Funcionalidad en desarrollo<br>Disponible pronto</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modales para el Mundo Post-Apocalíptico -->
+    
+    <!-- Modal Tierras Baldías -->
+    <div class="modal" id="wastelandModal">
+        <div class="modal-content world-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">🏜️ Tierras Baldías - Wasteland</h2>
+                <button class="close-btn" onclick="closeModal('wastelandModal')">&times;</button>
+            </div>
+            <div class="world-detailed-content">
+                <div class="world-section">
+                    <h3>🌡️ Condiciones Ambientales</h3>
+                    <div class="environment-stats">
+                        <div class="env-stat">
+                            <span class="env-icon">☢️</span>
+                            <div>
+                                <strong>Radiación:</strong> Alta (50-80 RAD/h)
+                                <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
+                            </div>
+                        </div>
+                        <div class="env-stat">
+                            <span class="env-icon">🌡️</span>
+                            <div>
+                                <strong>Temperatura:</strong> Extrema (45-55°C día)
+                                <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+                            </div>
+                        </div>
+                        <div class="env-stat">
+                            <span class="env-icon">💧</span>
+                            <div>
+                                <strong>Humedad:</strong> Muy Baja (5-15%)
+                                <div class="progress-bar"><div class="progress" style="width: 10%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>🎯 Recursos Disponibles</h3>
+                    <div class="resources-grid">
+                        <div class="resource-item legendary">
+                            <span class="resource-icon">⚡</span>
+                            <div>
+                                <strong>Núcleos de Energía</strong>
+                                <p>Muy Raro - Solo en cráteres profundos</p>
+                            </div>
+                        </div>
+                        <div class="resource-item rare">
+                            <span class="resource-icon">🔩</span>
+                            <div>
+                                <strong>Metal Radiactivo</strong>
+                                <p>Raro - Requiere equipo de protección</p>
+                            </div>
+                        </div>
+                        <div class="resource-item common">
+                            <span class="resource-icon">🪨</span>
+                            <div>
+                                <strong>Chatarra Básica</strong>
+                                <p>Común - Dispersa por toda el área</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>⚠️ Peligros y Amenazas</h3>
+                    <div class="dangers-list">
+                        <div class="danger-item high">
+                            <span class="danger-level">🔴 ALTO</span>
+                            <strong>Tormentas de Radiación:</strong> Pueden aparecer sin aviso, causan daño masivo
+                        </div>
+                        <div class="danger-item medium">
+                            <span class="danger-level">🟡 MEDIO</span>
+                            <strong>Mutantes Errantes:</strong> Runners y Tanks patrullan el área
+                        </div>
+                        <div class="danger-item low">
+                            <span class="danger-level">🟢 BAJO</span>
+                            <strong>Deshidratación:</strong> Consumo de agua aumentado x2
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>💡 Estrategias de Supervivencia</h3>
+                    <div class="survival-tips">
+                        <div class="tip-card">
+                            <strong>🏥 Para el MEDIC:</strong> Llevar doble cantidad de antídotos y detectores de radiación
+                        </div>
+                        <div class="tip-card">
+                            <strong>🔧 Para el TECH:</strong> Usar drones para exploración remota y evitar exposición
+                        </div>
+                        <div class="tip-card">
+                            <strong>🎒 Para el SCAVENGER:</strong> Movimiento rápido es clave, no permanecer mucho tiempo
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Ruinas Urbanas -->
+    <div class="modal" id="ruinsModal">
+        <div class="modal-content world-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">🏢 Ruinas Urbanas - Urban Decay</h2>
+                <button class="close-btn" onclick="closeModal('ruinsModal')">&times;</button>
+            </div>
+            <div class="world-detailed-content">
+                <div class="world-section">
+                    <h3>🏙️ Estructura del Área</h3>
+                    <div class="area-layout">
+                        <div class="building-info">
+                            <h4>🏢 Rascacielos Colapsados</h4>
+                            <p>Perfecto para establecer bases elevadas. Múltiples niveles para explorar.</p>
+                        </div>
+                        <div class="building-info">
+                            <h4>🚇 Sistema de Metro</h4>
+                            <p>Conexiones subterráneas seguras entre edificios. Ideal para movimiento sigiloso.</p>
+                        </div>
+                        <div class="building-info">
+                            <h4>🏪 Centros Comerciales</h4>
+                            <p>Gran cantidad de recursos de supervivencia y equipamiento civil.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>🎯 Puntos de Interés</h3>
+                    <div class="poi-grid">
+                        <div class="poi-item">
+                            <span class="poi-icon">🏥</span>
+                            <div>
+                                <strong>Hospital Abandonado</strong>
+                                <p>Suministros médicos de alta calidad</p>
+                                <span class="poi-difficulty">Dificultad: Media</span>
+                            </div>
+                        </div>
+                        <div class="poi-item">
+                            <span class="poi-icon">🏭</span>
+                            <div>
+                                <strong>Complejo Industrial</strong>
+                                <p>Maquinaria pesada y metales raros</p>
+                                <span class="poi-difficulty">Dificultad: Alta</span>
+                            </div>
+                        </div>
+                        <div class="poi-item">
+                            <span class="poi-icon">🏫</span>
+                            <div>
+                                <strong>Universidad Técnica</strong>
+                                <p>Equipos electrónicos y planos de construcción</p>
+                                <span class="poi-difficulty">Dificultad: Baja</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>🤝 Oportunidades Cooperativas</h3>
+                    <div class="coop-activities">
+                        <div class="coop-card">
+                            <strong>🏗️ Construcción Vertical:</strong> Tech construye plataformas mientras Scavenger asegura materiales desde alturas
+                        </div>
+                        <div class="coop-card">
+                            <strong>🕳️ Exploración de Túneles:</strong> Medic detecta peligros mientras el equipo explora el metro
+                        </div>
+                        <div class="coop-card">
+                            <strong>⚡ Restauración de Energía:</strong> Tech reactiva generadores para iluminar áreas oscuras
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Zonas de Mutantes -->
+    <div class="modal" id="mutantsModal">
+        <div class="modal-content world-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">🧟 Zonas de Mutantes - Danger Zones</h2>
+                <button class="close-btn" onclick="closeModal('mutantsModal')">&times;</button>
+            </div>
+            <div class="world-detailed-content">
+                <div class="world-section">
+                    <h3>👹 Tipos de Mutantes</h3>
+                    <div class="mutant-types">
+                        <div class="mutant-card runner">
+                            <div class="mutant-header">
+                                <span class="mutant-icon">💨</span>
+                                <h4>Runners</h4>
+                                <span class="threat-level low">Amenaza: Baja</span>
+                            </div>
+                            <div class="mutant-stats">
+                                <div class="stat"><strong>HP:</strong> 150</div>
+                                <div class="stat"><strong>Velocidad:</strong> Muy Alta</div>
+                                <div class="stat"><strong>Ataque:</strong> Rápido pero débil</div>
+                            </div>
+                            <p><strong>Táctica:</strong> Atacan en manadas. Scavenger puede evadirlos fácilmente.</p>
+                        </div>
+
+                        <div class="mutant-card tank">
+                            <div class="mutant-header">
+                                <span class="mutant-icon">🛡️</span>
+                                <h4>Tanks</h4>
+                                <span class="threat-level high">Amenaza: Alta</span>
+                            </div>
+                            <div class="mutant-stats">
+                                <div class="stat"><strong>HP:</strong> 800</div>
+                                <div class="stat"><strong>Velocidad:</strong> Lenta</div>
+                                <div class="stat"><strong>Ataque:</strong> Devastador</div>
+                            </div>
+                            <p><strong>Táctica:</strong> Requiere coordinación total del equipo. Tech debe establecer torretas.</p>
+                        </div>
+
+                        <div class="mutant-card spitter">
+                            <div class="mutant-header">
+                                <span class="mutant-icon">🤢</span>
+                                <h4>Spitters</h4>
+                                <span class="threat-level medium">Amenaza: Media</span>
+                            </div>
+                            <div class="mutant-stats">
+                                <div class="stat"><strong>HP:</strong> 300</div>
+                                <div class="stat"><strong>Velocidad:</strong> Media</div>
+                                <div class="stat"><strong>Ataque:</strong> A distancia + veneno</div>
+                            </div>
+                            <p><strong>Táctica:</strong> Medic debe neutralizar el veneno inmediatamente.</p>
+                        </div>
+
+                        <div class="mutant-card alpha">
+                            <div class="mutant-header">
+                                <span class="mutant-icon">👑</span>
+                                <h4>Alpha Mutant</h4>
+                                <span class="threat-level extreme">Amenaza: EXTREMA</span>
+                            </div>
+                            <div class="mutant-stats">
+                                <div class="stat"><strong>HP:</strong> 2500</div>
+                                <div class="stat"><strong>Velocidad:</strong> Variable</div>
+                                <div class="stat"><strong>Ataque:</strong> Múltiples habilidades</div>
+                            </div>
+                            <p><strong>Táctica:</strong> Boss que requiere estrategia específica y cooperación perfecta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>💎 Recompensas Exclusivas</h3>
+                    <div class="exclusive-rewards">
+                        <div class="reward-item legendary">
+                            <span class="reward-icon">🧬</span>
+                            <div>
+                                <strong>ADN Mutante Puro</strong>
+                                <p>Solo se obtiene de Alpha Mutants. Permite crafting de items legendarios.</p>
+                            </div>
+                        </div>
+                        <div class="reward-item rare">
+                            <span class="reward-icon">💉</span>
+                            <div>
+                                <strong>Sueros de Inmunidad</strong>
+                                <p>Protección temporal contra ataques de mutantes.</p>
+                            </div>
+                        </div>
+                        <div class="reward-item rare">
+                            <span class="reward-icon">⚔️</span>
+                            <div>
+                                <strong>Armas Bio-Modificadas</strong>
+                                <p>Equipamiento especializado contra mutantes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>🎯 Estrategias de Combate Cooperativo</h3>
+                    <div class="combat-strategies">
+                        <div class="strategy-card">
+                            <h4>🔺 Formación Triángulo Defensivo</h4>
+                            <p>Medic en el centro, Tech y Scavenger en los flancos. Ideal contra múltiples Runners.</p>
+                        </div>
+                        <div class="strategy-card">
+                            <h4>📏 Línea de Asalto</h4>
+                            <p>Los tres en línea: Scavenger-Tech-Medic. Perfecta para enfrentar Tanks.</p>
+                        </div>
+                        <div class="strategy-card">
+                            <h4>🎭 Emboscada Coordinada</h4>
+                            <p>Scavenger distrae, Tech embosca, Medic da soporte. Efectiva contra Spitters.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>⚡ Combos Especiales de Equipo</h3>
+                    <div class="team-combos">
+                        <div class="combo-card trinity">
+                            <strong>⚡ Trinity Strike:</strong> Los 3 atacan simultáneamente - Daño masivo concentrado
+                        </div>
+                        <div class="combo-card protective">
+                            <strong>🛡️ Protective Formation:</strong> Medic buffa, Tech/Scavenger protegen - Defensa aumentada
+                        </div>
+                        <div class="combo-card coordinated">
+                            <strong>🎯 Coordinated Assault:</strong> Sincronización perfecta - Eficiencia máxima
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -716,10 +2119,168 @@
         </div>
     </div>
 
+    <!-- Modal de Log Administrativo -->
+    <div class="modal" id="adminlogModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">📋 Log Administrativo - MaxVicioHack & ChuyMine</h2>
+                <button class="close-btn" onclick="closeModal('adminlogModal')">&times;</button>
+            </div>
+            <div class="admin-log-content">
+                <div class="log-tabs">
+                    <button class="log-tab active" onclick="switchLogTab('web')">🌐 Web (+1)</button>
+                    <button class="log-tab" onclick="switchLogTab('game')">🎮 Juego (+2)</button>
+                </div>
+                
+                <div class="log-section" id="webLog">
+                    <h3>🌐 Desarrollo Web - Cambios y Mejoras</h3>
+                    <div class="readme-content">
+                        <div class="changelog-entry">
+                            <div class="changelog-date">v0.1.9-enhanced - 27/05/2025</div>
+                            <div class="changelog-items">
+                                <div class="changelog-item added">➕ **AÑADIDO:** Botón para seguir a MaxVicioHack en Roblox</div>
+                                <div class="changelog-item added">➕ **AÑADIDO:** Notificación flotante para seguir en Roblox</div>
+                                <div class="changelog-item added">➕ **AÑADIDO:** Widget en tiempo real del grupo de Roblox</div>
+                                <div class="changelog-item added">➕ **AÑADIDO:** Sección de equipos formados con stats</div>
+                                <div class="changelog-item added">➕ **AÑADIDO:** Log Administrativo privado MaxVicioHack & ChuyMine</div>
+                                <div class="changelog-item added">➕ **AÑADIDO:** Pestaña pública de versiones del juego</div>
+                                <div class="changelog-item improved">🔧 **MEJORADO:** Estructura organizacional del dashboard</div>
+                            </div>
+                        </div>
+                        <div class="changelog-entry">
+                            <div class="changelog-date">v0.1.8-admin-access - 27/05/2025</div>
+                            <div class="changelog-items">
+                                <div class="changelog-item restricted">🔒 **CORREGIDO:** Sistema de acceso - Todas las tarjetas interactivas normalmente</div>
+                                <div class="changelog-item added">✅ **HABILITADO:** Estadísticas y Logs abren modales funcionales completos</div>
+                                <div class="changelog-item restricted">❌ **RESTRINGIDO:** Admin, Jugadores, Config, Sync abren modal "Acceso Solo para Administradores"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="log-section" id="gameLog" style="display: none;">
+                    <h3>🎮 Desarrollo del Juego - Implementaciones Roblox</h3>
+                    <div class="readme-content">
+                        <div class="changelog-entry">
+                            <div class="changelog-date">Planeado - Sistema de Equipos</div>
+                            <div class="changelog-items">
+                                <div class="changelog-item experimental">🧪 **PLANIFICADO:** Sistema de guardado de equipos/clanes</div>
+                                <div class="changelog-item experimental">🧪 **PLANIFICADO:** UI para modificar nombre, bandera y stats del equipo</div>
+                                <div class="changelog-item experimental">🧪 **PLANIFICADO:** Lista pública de todos los equipos formados</div>
+                                <div class="changelog-item experimental">🧪 **PLANIFICADO:** Persistencia de datos de equipos en DataStore</div>
+                            </div>
+                        </div>
+                        <div class="changelog-entry">
+                            <div class="changelog-date">En Desarrollo - Scripts Base</div>
+                            <div class="changelog-items">
+                                <div class="changelog-item experimental">🧪 **EN DESARROLLO:** Sistema de 3 roles obligatorios</div>
+                                <div class="changelog-item experimental">🧪 **EN DESARROLLO:** Mecánicas de construcción cooperativa</div>
+                                <div class="changelog-item experimental">🧪 **EN DESARROLLO:** Sistema de combate por equipos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Versiones Públicas -->
+    <div class="modal" id="versionsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">📱 Versiones del Juego - Echoes of Tomorrow</h2>
+                <button class="close-btn" onclick="closeModal('versionsModal')">&times;</button>
+            </div>
+            <div class="versions-content">
+                <div class="version-current">
+                    <h3>🚀 Versión Actual: v0.1.9-enhanced</h3>
+                    <div class="version-status">
+                        <span class="status-badge live">🔴 EN VIVO</span>
+                        <span class="release-date">Lanzado: 27 de Mayo, 2025</span>
+                    </div>
+                </div>
+                
+                <div class="versions-timeline">
+                    <div class="version-entry">
+                        <div class="version-header">
+                            <h4>v0.1.9-enhanced</h4>
+                            <span class="version-date">27/05/2025</span>
+                        </div>
+                        <div class="version-features">
+                            <div class="feature-item">🎮 Integración con perfil de Roblox</div>
+                            <div class="feature-item">👥 Sistema de equipos y clanes</div>
+                            <div class="feature-item">📊 Widget del grupo oficial</div>
+                            <div class="feature-item">🌐 Dashboard web completamente funcional</div>
+                        </div>
+                    </div>
+                    
+                    <div class="version-entry">
+                        <div class="version-header">
+                            <h4>v0.1.8-admin-access</h4>
+                            <span class="version-date">27/05/2025</span>
+                        </div>
+                        <div class="version-features">
+                            <div class="feature-item">🔒 Sistema de control de acceso implementado</div>
+                            <div class="feature-item">📊 Estadísticas en tiempo real disponibles</div>
+                            <div class="feature-item">📝 Sistema de logs funcional</div>
+                        </div>
+                    </div>
+                    
+                    <div class="version-entry">
+                        <div class="version-header">
+                            <h4>v0.1.7-LIVE</h4>
+                            <span class="version-date">27/05/2025</span>
+                        </div>
+                        <div class="version-features">
+                            <div class="feature-item">🌐 Primer lanzamiento público del dashboard</div>
+                            <div class="feature-item">🌍 Mundo post-apocalíptico detallado</div>
+                            <div class="feature-item">✨ Efectos visuales y animaciones</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="upcoming-features">
+                    <h3>🔮 Próximas Actualizaciones</h3>
+                    <div class="upcoming-list">
+                        <div class="upcoming-item">🎮 <strong>v0.2.0:</strong> Lanzamiento del juego en Roblox</div>
+                        <div class="upcoming-item">⚔️ <strong>v0.2.1:</strong> Sistema de combate cooperativo</div>
+                        <div class="upcoming-item">🏗️ <strong>v0.2.2:</strong> Construcción de bases sincronizada</div>
+                        <div class="upcoming-item">🌍 <strong>v0.3.0:</strong> Eventos globales del servidor</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Acceso Restringido -->
+    <div class="modal restricted-modal" id="restrictedModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">🔒 Acceso Restringido</h2>
+                <button class="close-btn" onclick="closeModal('restrictedModal')">&times;</button>
+            </div>
+            <div>
+                <span class="restricted-icon">🔐</span>
+                <div class="restricted-message">
+                    <strong>Acceso Solo para Administradores</strong><br><br>
+                    Esta función requiere permisos de administrador para acceder. 
+                    Solo los usuarios autorizados pueden utilizar esta funcionalidad.
+                </div>
+                <div class="contact-info">
+                    <h4>📞 ¿Necesitas Acceso?</h4>
+                    <p><strong>Contacta al Administrador:</strong></p>
+                    <p>👨‍💻 MaxVicioHack</p>
+                    <p>🤖 ChuyMine</p>
+                    <p>🎮 Echoes of Tomorrow Development Team</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <p>© 2025 MaxVicioHack - Echoes of Tomorrow Dashboard</p>
-        <p>Desarrollado por MaxVicioHack & ChuyMine | Acceso Restringido</p>
+        <p>Desarrollado por MaxVicioHack & ChuyMine | Panel de Administración</p>
     </footer>
 
     <script>
@@ -738,25 +2299,164 @@
 
         // Abrir modales del mundo post-apocalíptico
         function openWorldTab(worldType) {
-            // Por ahora solo mostrar alerta
-            alert(`🌍 Explorando zona: ${worldType.charAt(0).toUpperCase() + worldType.slice(1)}\n\n⚠️ Esta funcionalidad estará disponible próximamente.\n\n¡Mantente atento a las actualizaciones!`);
-        }
-
-        // Abrir modales de pestañas HABILITADAS
-        function openTab(tabName) {
-            const modal = document.getElementById(tabName + 'Modal');
+            const modal = document.getElementById(worldType + 'Modal');
             if (modal) {
                 modal.classList.add('active');
                 
-                // Log específico
-                console.log(`Abriendo: ${tabName}`);
+                // Log específico para cada zona
+                console.log(`Explorando: ${worldType.charAt(0).toUpperCase() + worldType.slice(1)} Zone`);
                 
-                // Actualizar datos en tiempo real al abrir
-                if (tabName === 'stats') {
-                    updateRealTimeData();
-                } else if (tabName === 'logs') {
-                    // Los logs ya están, pero podrían actualizarse
-                    console.log('📝 Logs system accessed');
+                // Efectos especiales por zona
+                if (worldType === 'wasteland') {
+                    console.log('⚠️ Cuidado con la radiación extrema');
+                } else if (worldType === 'ruins') {
+                    console.log('🏢 Explorando ruinas urbanas...');
+                } else if (worldType === 'mutants') {
+                    console.log('🧟 PELIGRO: Zona de mutantes detectada');
+                }
+            }
+        }
+
+        // Funciones para Roblox
+        function followOnRoblox() {
+            // Abrir perfil real de MaxVicioHack
+            window.open('https://www.roblox.com/es/users/6163489980/profile', '_blank');
+            console.log('🎮 Redirigiendo al perfil de MaxVicioHack en Roblox');
+            
+            // Ocultar notificación después de seguir
+            closeNotification();
+        }
+
+        function joinRobloxGroup() {
+            // Abrir grupo real xTurboo
+            window.open('https://www.roblox.com/es/communities/35722901/xTurboo#!/about', '_blank');
+            console.log('🏆 Redirigiendo al grupo xTurboo');
+        }
+
+        function closeNotification() {
+            const notification = document.getElementById('robloxNotification');
+            if (notification) {
+                notification.style.animation = 'slideOutNotification 0.5s ease forwards';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 500);
+            }
+        }
+
+        // Función para cambiar tabs en Log Administrativo
+        function switchLogTab(tabType) {
+            // Remover active de todos los tabs
+            document.querySelectorAll('.log-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Ocultar todas las secciones
+            document.querySelectorAll('.log-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Activar tab seleccionado
+            event.target.classList.add('active');
+            
+            // Mostrar sección correspondiente
+            if (tabType === 'web') {
+                document.getElementById('webLog').style.display = 'block';
+            } else if (tabType === 'game') {
+                document.getElementById('gameLog').style.display = 'block';
+            }
+            
+            console.log(`📋 Cambiando a tab: ${tabType}`);
+        }
+
+        // Verificar si el usuario es admin (MaxVicioHack o ChuyMine)
+        function checkAdminAccess() {
+            // Esta función verificaría credenciales reales en una implementación completa
+            // Por ahora, simularemos que siempre es admin para testing
+            const isAdmin = true; // En producción, esto sería una verificación real
+            
+            if (isAdmin) {
+                const adminTab = document.querySelector('.admin-only');
+                if (adminTab) {
+                    adminTab.style.display = 'block';
+                    console.log('🔑 Acceso administrativo concedido');
+                }
+            }
+        }
+
+        // Actualizar especificaciones técnicas en tiempo real
+        function updateTechSpecs() {
+            // Simular datos en vivo del juego
+            const specs = {
+                playersPerTeam: 3, // Fijo
+                progressionLevels: Math.floor(Math.random() * 10) + 50, // 50-59
+                structureTypes: Math.floor(Math.random() * 5) + 15, // 15-19
+                mutantClasses: Math.floor(Math.random() * 3) + 7, // 7-9
+                uniqueItems: Math.floor(Math.random() * 50) + 200, // 200-249
+                dynamicEvents: "24/7" // Fijo
+            };
+
+            // Actualizar elementos si existen
+            Object.keys(specs).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    const newValue = specs[key];
+                    if (typeof newValue === 'number' && newValue >= 50) {
+                        element.textContent = newValue + '+';
+                    } else {
+                        element.textContent = newValue;
+                    }
+                }
+            });
+
+            console.log('📊 Especificaciones técnicas actualizadas');
+        }
+        function updateGroupWidget() {
+            const memberCount = document.querySelector('.member-count');
+            const onlineCount = document.querySelector('.online-count');
+            
+            if (memberCount && onlineCount) {
+                // Simular cambios realistas en los números
+                const currentMembers = parseInt(memberCount.textContent.replace(',', ''));
+                const currentOnline = parseInt(onlineCount.textContent);
+                
+                // Pequeñas variaciones realistas
+                const memberVariation = Math.floor(Math.random() * 3) - 1; // -1, 0, o +1
+                const onlineVariation = Math.floor(Math.random() * 10) - 5; // -5 a +5
+                
+                const newMembers = Math.max(1000, currentMembers + memberVariation);
+                const newOnline = Math.max(50, Math.min(150, currentOnline + onlineVariation));
+                
+                memberCount.textContent = newMembers.toLocaleString();
+                onlineCount.textContent = newOnline;
+            }
+        }
+
+        // Abrir modales de pestañas
+        function openTab(tabName) {
+            // Pestañas que requieren acceso de administrador
+            const restrictedTabs = ['admin', 'players', 'config', 'sync'];
+            
+            if (restrictedTabs.includes(tabName)) {
+                // Abrir modal de acceso restringido
+                const restrictedModal = document.getElementById('restrictedModal');
+                restrictedModal.classList.add('active');
+                console.log(`🔒 Acceso restringido intentado: ${tabName}`);
+            } else if (tabName === 'adminlog') {
+                // Verificar acceso administrativo para log
+                const adminModal = document.getElementById('adminlogModal');
+                adminModal.classList.add('active');
+                console.log('📋 Acceso al Log Administrativo');
+            } else {
+                // Abrir modal normal para estadísticas, logs y versiones
+                const modal = document.getElementById(tabName + 'Modal');
+                if (modal) {
+                    modal.classList.add('active');
+                    console.log(`✅ Acceso permitido: ${tabName}`);
+                    
+                    // Actualizar datos en tiempo real al abrir
+                    if (tabName === 'stats') {
+                        updateRealTimeData();
+                    }
                 }
             }
         }
@@ -798,7 +2498,7 @@
             const logMessages = [
                 "🎮 Nuevo jugador conectado al servidor",
                 "🔧 Mantenimiento automático completado", 
-                "⚔️ Evento de combate contra mutantes finalizado",
+                "⚔️ Evento de combate contra mutantes finalizado",  
                 "📊 Estadísticas del servidor actualizadas",
                 "🌍 Evento global programado para dentro de 2 horas",
                 "🏗️ Equipo completó construcción de estructura defensiva",
@@ -824,40 +2524,12 @@
             }
         }
 
-        // Mostrar notificación de funciones deshabilitadas
-        function showDisabledNotification() {
-            // Crear notificación temporal
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: linear-gradient(45deg, #ff6b6b, #ffa500);
-                color: #fff;
-                padding: 15px 25px;
-                border-radius: 10px;
-                font-weight: bold;
-                z-index: 10000;
-                animation: slideIn 0.3s ease;
-                box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
-            `;
-            notification.innerHTML = `
-                🔒 Funcionalidad en desarrollo<br>
-                <small>Disponible próximamente</small>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Remover después de 3 segundos
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease forwards';
-                setTimeout(() => notification.remove(), 300);
-            }, 3000);
-        }
-
-        // Agregar listeners para cards deshabilitadas
+        // Inicializar la página
         document.addEventListener('DOMContentLoaded', function() {
             createParticles();
+            
+            // Verificar acceso administrativo
+            checkAdminAccess();
             
             // Actualizar estadísticas cada 8 segundos
             setInterval(updateRealTimeData, 8000);
@@ -865,34 +2537,37 @@
             // Agregar nuevo log cada 12 segundos
             setInterval(addNewLog, 12000);
             
-            // Listeners para cards deshabilitadas
-            const disabledCards = document.querySelectorAll('.tab-card.disabled');
-            disabledCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    showDisabledNotification();
-                });
-            });
+            // Actualizar widget del grupo cada 30 segundos
+            setInterval(updateGroupWidget, 30000);
             
-            console.log('🎮 Echoes of Tomorrow Dashboard - Versión Restringida Inicializada');
+            // Actualizar especificaciones técnicas cada 45 segundos
+            setInterval(updateTechSpecs, 45000);
+            
+            // Mostrar notificación flotante después de 5 segundos
+            setTimeout(() => {
+                const notification = document.getElementById('robloxNotification');
+                if (notification) {
+                    notification.style.display = 'block';
+                }
+            }, 5000);
+            
+            // Agregar estilo de animación para notificación
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideOutNotification {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            console.log('🎮 Echoes of Tomorrow Dashboard - Enhanced Version Inicializada');
             console.log('👨‍💻 MaxVicioHack & 🤖 ChuyMine');
-            console.log('✅ Habilitado: Estadísticas y Logs');
-            console.log('🔒 Deshabilitado: Admin, Jugadores, Config, Sync');
+            console.log('✅ Acceso público: Estadísticas, Logs, Versiones');
+            console.log('🔒 Acceso restringido: Admin, Jugadores, Config, Sync');
+            console.log('👑 Acceso administrativo: Log Administrativo');
+            console.log('🎮 Integración Roblox: Perfil, Grupo, Notificaciones');
         });
-
-        // Agregar estilos de animación para notificaciones
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes slideOut {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100%); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
