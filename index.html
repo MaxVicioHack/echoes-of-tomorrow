@@ -1,607 +1,4 @@
-<h2 class="modal-title">🏜️ Tierras Baldías - Wasteland</h2>
-                <button class="close-btn" onclick="closeModal('wastelandModal')">&times;</button>
-            </div>
-            <div class="world-detailed-content">
-                <div class="world-section">
-                    <h3>🌡️ Condiciones Ambientales</h3>
-                    <div class="environment-stats">
-                        <div class="env-stat">
-                            <span class="env-icon">☢️</span>
-                            <div>
-                                <strong>Radiación:</strong> Alta (50-80 RAD/h)
-                                <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
-                            </div>
-                        </div>
-                        <div class="env-stat">
-                            <span class="env-icon">🌡️</span>
-                            <div>
-                                <strong>Temperatura:</strong> Extrema (45-55°C día)
-                                <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
-                            </div>
-                        </div>
-                        <div class="env-stat">
-                            <span class="env-icon">💧</span>
-                            <div>
-                                <strong>Humedad:</strong> Muy Baja (5-15%)
-                                <div class="progress-bar"><div class="progress" style="width: 10%;"></div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="world-section">
-                    <h3>🎯 Recursos Disponibles</h3>
-                    <div class="resources-grid">
-                        <div class="resource-item legendary">
-                            <span class="resource-icon">⚡</span>
-                            <div>
-                                <strong>Núcleos de Energía</strong>
-                                <p>Muy Raro - Solo en cráteres profundos</p>
-                            </div>
-                        </div>
-                        <div class="resource-item rare">
-                            <span class="resource-icon">🔩</span>
-                            <div>
-                                <strong>Metal Radiactivo</strong>
-                                <p>Raro - Requiere equipo de protección</p>
-                            </div>
-                        </div>
-                        <div class="resource-item common">
-                            <span class="resource-icon">🪨</span>
-                            <div>
-                                <strong>Chatarra Básica</strong>
-                                <p>Común - Dispersa por toda el área</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="world-section">
-                    <h3>⚠️ Peligros y Amenazas</h3>
-                    <div class="dangers-list">
-                        <div class="danger-item high">
-                            <span class="danger-level">🔴 ALTO</span>
-                            <strong>Tormentas de Radiación:</strong> Pueden aparecer sin aviso, causan daño masivo
-                        </div>
-                        <div class="danger-item medium">
-                            <span class="danger-level">🟡 MEDIO</span>
-                            <strong>Mutantes Errantes:</strong> Runners y Tanks patrullan el área
-                        </div>
-                        <div class="danger-item low">
-                            <span class="danger-level">🟢 BAJO</span>
-                            <strong>Deshidratación:</strong> Consumo de agua aumentado x2
-                        </div>
-                    </div>
-                </div>
-
-                <div class="world-section">
-                    <h3>💡 Estrategias de Supervivencia</h3>
-                    <div class="survival-tips">
-                        <div class="tip-card">
-                            <strong>🏥 Para el MEDIC:</strong> Llevar doble cantidad de antídotos y detectores de radiación
-                        </div>
-                        <div class="tip-card">
-                            <strong>🔧 Para el TECH:</strong> Usar drones para exploración remota y evitar exposición
-                        </div>
-                        <div class="tip-card">
-                            <strong>🎒 Para el SCAVENGER:</strong> Movimiento rápido es clave, no permanecer mucho tiempo
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Ruinas Urbanas -->
-    <div class="modal" id="ruinsModal">
-        <div class="modal-content world-modal">
-            <div class="modal-header">
-                <h2 class="modal-title">🏢 Ruinas Urbanas - Urban Decay</h2>
-                <button class="close-btn" onclick="closeModal('ruinsModal')">&times;</button>
-            </div>
-            <div class="world-detailed-content">
-                <div class="world-section">
-                    <h3>🏙️ Estructura del Área</h3>
-                    <div class="area-layout">
-                        <div class="building-info">
-                            <h4>🏢 Rascacielos Colapsados</h4>
-                            <p>Perfecto para establecer bases elevadas. Múltiples niveles para explorar.</p>
-                        </div>
-                        <div class="building-info">
-                            <h4>🚇 Sistema de Metro</h4>
-                            <p>Conexiones subterráneas seguras entre edificios. Ideal para movimiento sigiloso.</p>
-                        </div>
-                        <div class="building-info">
-                            <h4>🏪 Centros Comerciales</h4>
-                            <p>Gran cantidad de recursos de supervivencia y equipamiento civil.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="world-section">
-                    <h3>🎯 Puntos de Interés</h3>
-                    <div class="poi-grid">
-                        <div class="poi-item">
-                            <span class="poi-icon">🏥</span>
-                            <div>
-                                <strong>Hospital Abandonado</strong>
-                                <p>Suministros médicos de alta calidad</p>
-                                <span class="poi-difficulty">Dificultad: Media</span>
-                            </div>
-                        </div>
-                        <div class="poi-item">
-                            <span class="poi-icon">🏭</span>
-                            <div>
-                                <strong>Complejo Industrial</strong>
-                                <p>Maquinaria pesada y metales raros</p>
-                                <span class="poi-difficulty">Dificultad: Alta</span>
-                            </div>
-                        </div>
-                        <div class="poi-item">
-                            <span class="poi-icon">🏫</span>
-                            <div>
-                                <strong>Universidad Técnica</strong>
-                                <p>Equipos electrónicos y planos de construcción</p>
-                                <span class="poi-difficulty">Dificultad: Baja</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="world-section">
-                    <h3>🤝 Oportunidades Cooperativas</h3>
-                    <div class="coop-activities">
-                        <div class="coop-card">
-                            <strong>🏗️ Construcción Vertical:</strong> Tech construye plataformas mientras Scavenger asegura materiales desde alturas
-                        </div>
-                        <div class="coop-card">
-                            <strong>🕳️ Exploración de Túneles:</strong> Medic detecta peligros mientras el equipo explora el metro
-                        </div>
-                        <div class="coop-card">
-                            <strong>⚡ Restauración de Energía:</strong> Tech reactiva generadores para iluminar áreas oscuras
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Zonas de Mutantes -->
-    <div class="modal" id="mutantsModal">
-        <div class="modal-content world-modal">
-            <div class="modal-header">
-                <h2 class="modal-title">🧟 Zonas de Mutantes - Danger Zones</h2>
-                <button class="close-btn" onclick="closeModal('mutantsModal')">&times;</button>
-            </div>
-            <div class="world-detailed-content">
-                <div class="world-section">
-                    <h3>👹 Tipos de Mutantes</h3>
-                    <div class="mutant-types">
-                        <div class="mutant-card runner">
-                            <div class="mutant-header">
-                                <span class="mutant-icon">💨</span>
-                                <h4>Runners</h4>
-                                <span class="threat-level low">Amenaza: Baja</span>
-                            </div>
-                            <div class="mutant-stats">
-                                <div class="stat"><strong>HP:</strong> 150</div>
-                                <div class="stat"><strong>Velocidad:</strong> Muy Alta</div>
-                                <div class="stat"><strong>Ataque:</strong> Rápido pero débil</div>
-                            </div>
-                            <p><strong>Táctica:</strong> Atacan en manadas. Scavenger puede evadirlos fácilmente.</p>
-                        </div>
-
-                        <div class="mutant-card tank">
-                            <div class="mutant-header">
-                                <span class="mutant-icon">🛡️</span>
-                                <h4>Tanks</h4>
-                                <span class="threat-level high">Amenaza: Alta</span>
-                            </div>
-                            <div class="mutant-stats">
-                                <div class="stat"><strong>HP:</strong> 800</div>
-                                <div class="stat"><strong>Velocidad:</strong> Lenta</div>
-                                <div class="stat"><strong>Ataque:</strong> Devastador</div>
-                            </div>
-                            <p><strong>Táctica:</strong> Requiere coordinación total del equipo. Tech debe establecer torretas.</p>
-                        </div>
-
-                        <div class="mutant-card spitter">
-                            <div class="mutant-header">
-                                <span class="mutant-icon">🤢</span>
-                                <h4>Spitters</h4>
-                                <span class="threat-level medium">Amenaza: Media</span>
-                            </div>
-                            <div class="mutant-stats">
-                                <div class="stat"><strong>HP:</strong> 300</div>
-                                <div class="stat"><strong>Velocidad:</strong> Media</div>
-                                <div class="stat"><strong>Ataque:</strong> A distancia + veneno</div>
-                            </div>
-                            <p><strong>Táctica:</strong> Medic debe neutralizar el veneno inmediatamente.</p>
-                        </div>
-
-                        <div class="mutant-card alpha">
-                            <div class="mutant-header">
-                                <span class="mutant-icon">👑</span>
-                                <h4>Alpha Mutant</h4>
-                                <span class="threat-level extreme">Amenaza: EXTREMA</span>
-                            </div>
-                            <div class="mutant-stats">
-                                <div class="stat"><strong>HP:</strong> 2500</div>
-                                <div class="stat"><strong>Velocidad:</strong> Variable</div>
-                                <div class="stat"><strong>Ataque:</strong> Múltiples habilidades</div>
-                            </div>
-                            <p><strong>Táctica:</strong> Boss que requiere estrategia específica y cooperación perfecta.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="world-section">
-                    <h3>💎 Recompensas Exclusivas</h3>
-                    <div class="exclusive-rewards">
-                        <div class="reward-item legendary">
-                            <span class="reward-icon">🧬</span>
-                            <div>
-                                <strong>ADN Mutante Puro</strong>
-                                <p>Solo se obtiene de Alpha Mutants. Permite crafting de items legendarios.</p>
-                            </div>
-                        </div>
-                        <div class="reward-item rare">
-                            <span class="reward-icon">💉</span>
-                            <div>
-                                <strong>Sueros de Inmunidad</strong>
-                                <p>Protección temporal contra ataques de mutantes.</p>
-                            </div>
-                        </div>
-                        <div class="reward-item rare">
-                            <span class="reward-icon">⚔️</span>
-                            <div>
-                                <strong>Armas Bio-Modificadas</strong>
-                                <p>Equipamiento especializado contra mutantes.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="world-section">
-                    <h3>🎯 Estrategias de Combate Cooperativo</h3>
-                    <div class="combat-strategies">
-                        <div class="strategy-card">
-                            <h4>🔺 Formación Triángulo Defensivo</h4>
-                            <p>Medic en el centro, Tech y Scavenger en los flancos. Ideal contra múltiples Runners.</p>
-                        </div>
-                        <div class="strategy-card">
-                            <h4>📏 Línea de Asalto</h4>
-                            <p>Los tres en línea: Scavenger-Tech-Medic. Perfecta para enfrentar Tanks.</p>
-                        </div>
-                        <div class="strategy-card">
-                            <h4>🎭 Emboscada Coordinada</h4>
-                            <p>Scavenger distrae, Tech embosca, Medic da soporte. Efectiva contra Spitters.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="world-section">
-                    <h3>⚡ Combos Especiales de Equipo</h3>
-                    <div class="team-combos">
-                        <div class="combo-card trinity">
-                            <strong>⚡ Trinity Strike:</strong> Los 3 atacan simultáneamente - Daño masivo concentrado
-                        </div>
-                        <div class="combo-card protective">
-                            <strong>🛡️ Protective Formation:</strong> Medic buffa, Tech/Scavenger protegen - Defensa aumentada
-                        </div>
-                        <div class="combo-card coordinated">
-                            <strong>🎯 Coordinated Assault:</strong> Sincronización perfecta - Eficiencia máxima
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para Panel de Administración -->
-    <div class="modal" id="adminModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">⚙️ Panel de Administración</h2>
-                <button class="close-btn" onclick="closeModal('adminModal')">&times;</button>
-            </div>
-            <div class="admin-panel">
-                <div class="admin-card">
-                    <h4>🎮 Control del Servidor</h4>
-                    <p>Estado: <span style="color: #00ff88;">🟢 ONLINE</span></p>
-                    <button class="tab-button" style="margin-top: 10px;">Reiniciar Servidor</button>
-                </div>
-                <div class="admin-card">
-                    <h4>🌍 Eventos Globales</h4>
-                    <p>Próximo evento en: <span style="color: #00ccff;">1h 23m</span></p>
-                    <button class="tab-button" style="margin-top: 10px;">Programar Evento</button>
-                </div>
-                <div class="admin-card">
-                    <h4>⚔️ Sistema de Combate</h4>
-                    <p>Balance: <span style="color: #00ff88;">Activo</span></p>
-                    <button class="tab-button" style="margin-top: 10px;">Ajustar Balance</button>
-                </div>
-                <div class="admin-card">
-                    <h4>🏗️ Construcciones</h4>
-                    <p>Sync Rate: <span style="color: #00ccff;">98.5%</span></p>
-                    <button class="tab-button" style="margin-top: 10px;">Verificar Sync</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para Estadísticas -->
-    <div class="modal" id="statsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">📊 Estadísticas en Tiempo Real</h2>
-                <button class="close-btn" onclick="closeModal('statsModal')">&times;</button>
-            </div>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-number">147</span>
-                    <p>Jugadores Activos</p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">49</span>
-                    <p>Equipos Formados</p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">312</span>
-                    <p>Estructuras Construidas</p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">23</span>
-                    <p>Eventos Completados</p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">1,847</span>
-                    <p>Mutantes Eliminados</p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">98.2%</span>
-                    <p>Uptime del Servidor</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para Control de Jugadores -->
-    <div class="modal" id="playersModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">👥 Control de Jugadores</h2>
-                <button class="close-btn" onclick="closeModal('playersModal')">&times;</button>
-            </div>
-            <div style="display: grid; gap: 20px;">
-                <div style="background: rgba(0,255,136,0.1); padding: 20px; border-radius: 10px;">
-                    <h4>🎯 Equipos Activos</h4>
-                    <p><strong>Equipo Alpha:</strong> Scavenger_01, Tech_Pro, Medic_Hero</p>
-                    <p><strong>Estado:</strong> <span style="color: #00ff88;">Construyendo base</span></p>
-                </div>
-                <div style="background: rgba(0,204,255,0.1); padding: 20px; border-radius: 10px;">
-                    <h4>⚠️ Reportes Recientes</h4>
-                    <p><strong>15:23:</strong> Posible exploit reportado - Investigando</p>
-                    <p><strong>14:45:</strong> Spam en chat - Usuario advertido</p>
-                </div>
-                <div style="background: rgba(255,107,107,0.1); padding: 20px; border-radius: 10px;">
-                    <h4>🔨 Acciones de Moderación</h4>
-                    <button class="tab-button" style="margin: 5px;">Kick Player</button>
-                    <button class="tab-button" style="margin: 5px;">Temp Ban</button>
-                    <button class="tab-button" style="margin: 5px;">Reset Team</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para Logs -->
-    <div class="modal" id="logsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">📝 Sistema de Logs</h2>
-                <button class="close-btn" onclick="closeModal('logsModal')">&times;</button>
-            </div>
-            <div style="max-height: 400px; overflow-y: auto;">
-                <div class="log-entry">
-                    <div class="log-time">15:47:23</div>
-                    <div>✅ Equipo "Alpha" completó construcción de Refugio Básico</div>
-                </div>
-                <div class="log-entry">
-                    <div class="log-time">15:45:12</div>
-                    <div>⚔️ Invasión de mutantes iniciada en Zona Norte</div>
-                </div>
-                <div class="log-entry">
-                    <div class="log-time">15:43:08</div>
-                    <div>🔄 Sincronización con web completada exitosamente</div>
-                </div>
-                <div class="log-entry">
-                    <div class="log-time">15:41:55</div>
-                    <div>👥 Nuevo equipo formado: Scavenger_Pro, Tech_Master, Medic_Elite</div>
-                </div>
-                <div class="log-entry">
-                    <div class="log-time">15:40:30</div>
-                    <div>🌙 Ciclo nocturno iniciado - Spawn de mutantes aumentado</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para Configuraciones -->
-    <div class="modal" id="configModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">🔧 Configuraciones Remotas</h2>
-                <button class="close-btn" onclick="closeModal('configModal')">&times;</button>
-            </div>
-            <div style="display: grid; gap: 20px;">
-                <div style="background: rgba(0,255,136,0.1); padding: 20px; border-radius: 10px;">
-                    <h4>⚖️ Balance del Juego</h4>
-                    <label>Spawn Rate Mutantes: <input type="range" min="1" max="10" value="5" style="margin-left: 10px;"></label><br>
-                    <label>XP Multiplier: <input type="range" min="1" max="5" value="2" style="margin-left: 10px;"></label>
-                </div>
-                <div style="background: rgba(0,204,255,0.1); padding: 20px; border-radius: 10px;">
-                    <h4>🌍 Eventos Globales</h4>
-                    <button class="tab-button" style="margin: 5px;">Tormenta Radioactiva</button>
-                    <button class="tab-button" style="margin: 5px;">Supply Drop</button>
-                    <button class="tab-button" style="margin: 5px;">Aurora Borealis</button>
-                </div>
-                <div style="background: rgba(255,107,107,0.1); padding: 20px; border-radius: 10px;">
-                    <h4>🎯 Configuraciones Avanzadas</h4>
-                    <label><input type="checkbox" checked> Auto-restart cada 6 horas</label><br>
-                    <label><input type="checkbox" checked> Backup automático</label><br>
-                    <label><input type="checkbox"> Modo debug activo</label>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para Sincronización -->
-    <div class="modal" id="syncModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">🔄 Monitor de Sincronización</h2>
-                <button class="close-btn" onclick="closeModal('syncModal')">&times;</button>
-            </div>
-            <div style="display: grid; gap: 20px;">
-                <div style="background: rgba(0,255,136,0.1); padding: 20px; border-radius: 10px;">
-                    <h4>🌐 Estado de Conexión</h4>
-                    <p>Roblox ↔ Web: <span style="color: #00ff88;">🟢 CONECTADO</span></p>
-                    <p>Última sincronización: <span style="color: #00ccff;">hace 2 minutos</span></p>
-                </div>
-                <div style="background: rgba(0,204,255,0.1); padding: 20px; border-radius: 10px;">
-                    <h4>💾 Sistema de Archivación</h4>
-                    <p>Conversaciones guardadas: <span style="color: #00ccff;">1</span></p>
-                    <p>Próximo backup: <span style="color: #00ff88;">3 minutos</span></p>
-                </div>
-                <div style="background: rgba(255,107,107,0.1); padding: 20px; border-radius: 10px;">
-                    <h4>🔧 Acciones de Mantenimiento</h4>
-                    <button class="tab-button" style="margin: 5px;">Forzar Sync</button>
-                    <button class="tab-button" style="margin: 5px;">Crear Backup</button>
-                    <button class="tab-button" style="margin: 5px;">Verificar Integridad</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>© 2025 MaxVixioHack - Echoes of Tomorrow Dashboard</p>
-        <p>Desarrollado por MaxVixioHack & ChuyMine | Acceso Privado</p>
-    </footer>
-
-    <script>
-        // Crear partículas animadas
-        function createParticles() {
-            const particles = document.getElementById('particles');
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                particles.appendChild(particle);
-            }
-        }
-
-        // Abrir modales del mundo post-apocalíptico
-        function openWorldTab(worldType) {
-            const modal = document.getElementById(worldType + 'Modal');
-            modal.classList.add('active');
-            
-            // Log específico para cada zona
-            console.log(`Explorando: ${worldType.charAt(0).toUpperCase() + worldType.slice(1)} Zone`);
-            
-            // Efectos especiales por zona
-            if (worldType === 'wasteland') {
-                console.log('⚠️ Cuidado con la radiación extrema');
-            } else if (worldType === 'ruins') {
-                console.log('🏢 Explorando ruinas urbanas...');
-            } else if (worldType === 'mutants') {
-                console.log('🧟 PELIGRO: Zona de mutantes detectada');
-            }
-        }
-
-        // Abrir modales de pestañas
-        function openTab(tabName) {
-            const modal = document.getElementById(tabName + 'Modal');
-            modal.classList.add('active');
-            
-            // Simular carga de datos
-            console.log(`Cargando datos de ${tabName}...`);
-        }
-
-        // Cerrar modales
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('active');
-        }
-
-        // Cerrar modal al hacer clic fuera
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.classList.remove('active');
-            }
-        }
-
-        // Simular datos en tiempo real
-        function updateRealTimeData() {
-            // Actualizar números aleatorios para simular actividad
-            const statNumbers = document.querySelectorAll('.stat-number');
-            statNumbers.forEach(stat => {
-                if (stat.textContent !== '98.2%') {
-                    const currentNum = parseInt(stat.textContent);
-                    const variation = Math.floor(Math.random() * 5) - 2;
-                    stat.textContent = Math.max(0, currentNum + variation);
-                }
-            });
-        }
-
-        // Agregar logs en tiempo real
-        function addNewLog() {
-            const logsContainer = document.querySelector('#logsModal .modal-content > div:last-child');
-            const now = new Date();
-            const timeString = now.toTimeString().slice(0, 8);
-            
-            const logMessages = [
-                "🎮 Nuevo jugador conectado",
-                "🔧 Mantenimiento automático completado", 
-                "⚔️ Evento de combate finalizado",
-                "📊 Estadísticas actualizadas",
-                "🌍 Evento global programado"
-            ];
-            
-            const newLog = document.createElement('div');
-            newLog.className = 'log-entry';
-            newLog.innerHTML = `
-                <div class="log-time">${timeString}</div>
-                <div>${logMessages[Math.floor(Math.random() * logMessages.length)]}</div>
-            `;
-            
-            logsContainer.insertBefore(newLog, logsContainer.firstChild);
-            
-            // Mantener solo los últimos 10 logs
-            const logs = logsContainer.querySelectorAll('.log-entry');
-            if (logs.length > 10) {
-                logs[logs.length - 1].remove();
-            }
-        }
-
-        // Inicializar la página
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            
-            // Actualizar datos cada 5 segundos
-            setInterval(updateRealTimeData, 5000);
-            
-            // Agregar nuevo log cada 10 segundos
-            setInterval(addNewLog, 10000);
-            
-            console.log('🎮 Echoes of Tomorrow Dashboard - Inicializado');
-            console.log('👨‍💻 MaxVixioHack & 🤖 ChuyMine');
-        });
-    </script>
-</body>
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -867,6 +264,82 @@
             border-color: #00ff88;
         }
 
+        /* Tarjetas deshabilitadas */
+        .tab-card.disabled {
+            background: rgba(128, 128, 128, 0.1);
+            border-color: rgba(128, 128, 128, 0.3);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .tab-card.disabled:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: rgba(128, 128, 128, 0.3);
+        }
+
+        .tab-card.disabled::before {
+            display: none;
+        }
+
+        .tab-card.disabled .tab-icon {
+            background: linear-gradient(45deg, #808080, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tab-card.disabled h3 {
+            color: #808080;
+        }
+
+        .tab-card.disabled .tab-button {
+            background: linear-gradient(45deg, #808080, #a0a0a0);
+            cursor: not-allowed;
+        }
+
+        .tab-card.disabled .tab-button:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Overlay de "Proximamente" */
+        .coming-soon-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tab-card.disabled:hover .coming-soon-overlay {
+            opacity: 1;
+        }
+
+        .coming-soon-text {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .coming-soon-desc {
+            color: #b0b0b0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
         .tab-icon {
             font-size: 4rem;
             margin-bottom: 20px;
@@ -978,313 +451,7 @@
             box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
         }
 
-        /* Estilos para modales del mundo */
-        .world-modal {
-            max-width: 95vw;
-            max-height: 95vh;
-            overflow-y: auto;
-        }
-
-        .world-detailed-content {
-            display: grid;
-            gap: 30px;
-        }
-
-        .world-section {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 25px;
-            border-left: 4px solid #ff6b6b;
-        }
-
-        .world-section h3 {
-            color: #ff6b6b;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Estilos para estadísticas ambientales */
-        .environment-stats {
-            display: grid;
-            gap: 15px;
-        }
-
-        .env-stat {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        .env-icon {
-            font-size: 2rem;
-            width: 50px;
-            text-align: center;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            margin-top: 5px;
-            overflow: hidden;
-        }
-
-        .progress {
-            height: 100%;
-            background: linear-gradient(90deg, #ff6b6b, #ffa500);
-            border-radius: 4px;
-            transition: width 0.3s ease;
-        }
-
-        /* Estilos para recursos */
-        .resources-grid {
-            display: grid;
-            gap: 15px;
-        }
-
-        .resource-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid;
-        }
-
-        .resource-item.legendary {
-            background: rgba(255, 215, 0, 0.1);
-            border-left-color: #FFD700;
-        }
-
-        .resource-item.rare {
-            background: rgba(138, 43, 226, 0.1);
-            border-left-color: #8A2BE2;
-        }
-
-        .resource-item.common {
-            background: rgba(128, 128, 128, 0.1);
-            border-left-color: #808080;
-        }
-
-        .resource-icon {
-            font-size: 2rem;
-            width: 50px;
-            text-align: center;
-        }
-
-        /* Estilos para peligros */
-        .dangers-list {
-            display: grid;
-            gap: 15px;
-        }
-
-        .danger-item {
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid;
-        }
-
-        .danger-item.high {
-            background: rgba(255, 107, 107, 0.1);
-            border-left-color: #ff6b6b;
-        }
-
-        .danger-item.medium {
-            background: rgba(255, 193, 7, 0.1);
-            border-left-color: #ffc107;
-        }
-
-        .danger-item.low {
-            background: rgba(40, 167, 69, 0.1);
-            border-left-color: #28a745;
-        }
-
-        .danger-level {
-            font-weight: bold;
-            padding: 3px 8px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin-right: 10px;
-        }
-
-        /* Estilos para tips de supervivencia */
-        .survival-tips {
-            display: grid;
-            gap: 15px;
-        }
-
-        .tip-card {
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #00ff88;
-        }
-
-        /* Estilos para mutantes */
-        .mutant-types {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .mutant-card {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 15px;
-            padding: 20px;
-            border: 2px solid;
-            transition: all 0.3s ease;
-        }
-
-        .mutant-card.runner { border-color: #28a745; }
-        .mutant-card.tank { border-color: #dc3545; }
-        .mutant-card.spitter { border-color: #ffc107; }
-        .mutant-card.alpha { border-color: #6f42c1; }
-
-        .mutant-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .mutant-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .mutant-icon {
-            font-size: 2rem;
-        }
-
-        .threat-level {
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .threat-level.low { background: #28a745; color: white; }
-        .threat-level.medium { background: #ffc107; color: black; }
-        .threat-level.high { background: #dc3545; color: white; }
-        .threat-level.extreme { background: #6f42c1; color: white; }
-
-        .mutant-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .stat {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 8px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        /* Estilos para estrategias y combos */
-        .combat-strategies,
-        .team-combos {
-            display: grid;
-            gap: 15px;
-        }
-
-        .strategy-card,
-        .combo-card {
-            background: rgba(0, 204, 255, 0.1);
-            border: 1px solid rgba(0, 204, 255, 0.3);
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #00ccff;
-        }
-
-        .combo-card.trinity { border-left-color: #ff6b6b; background: rgba(255, 107, 107, 0.1); }
-        .combo-card.protective { border-left-color: #28a745; background: rgba(40, 167, 69, 0.1); }
-        .combo-card.coordinated { border-left-color: #ffc107; background: rgba(255, 193, 7, 0.1); }
-
-        /* Estilos adicionales para el mundo */
-        .area-layout,
-        .poi-grid,
-        .coop-activities,
-        .exclusive-rewards {
-            display: grid;
-            gap: 15px;
-        }
-
-        .building-info,
-        .poi-item,
-        .coop-card,
-        .reward-item {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #00ccff;
-        }
-
-        .poi-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .poi-icon {
-            font-size: 2rem;
-            width: 50px;
-            text-align: center;
-        }
-
-        .poi-difficulty {
-            color: #ffc107;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .reward-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .reward-item.legendary {
-            border-left-color: #FFD700;
-            background: rgba(255, 215, 0, 0.1);
-        }
-
-        .reward-item.rare {
-            border-left-color: #8A2BE2;
-            background: rgba(138, 43, 226, 0.1);
-        }
-
-        .reward-icon {
-            font-size: 2rem;
-            width: 50px;
-            text-align: center;
-        }
-
-        /* Estilos específicos para cada pestaña */
-        .admin-panel {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .admin-card {
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-        }
-
+        /* Estilos específicos para estadísticas */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1358,8 +525,8 @@
     <!-- Header principal -->
     <header class="header">
         <h1>🎮 ECHOES OF TOMORROW</h1>
-        <p>Panel de Administración - MaxVixioHack & ChuyMine</p>
-        <span class="version-badge">v0.1.5-dev</span>
+        <p>Panel de Administración - MaxVicioHack & ChuyMine</p>
+        <span class="version-badge">v0.1.8-restricted</span>
     </header>
 
     <!-- Contenedor principal -->
@@ -1403,15 +570,19 @@
 
         <!-- Grid de pestañas principales -->
         <div class="dashboard-grid">
-            <!-- Panel de Administración -->
-            <div class="tab-card" onclick="openTab('admin')">
+            <!-- Panel de Administración - DESHABILITADO -->
+            <div class="tab-card disabled">
                 <span class="tab-icon">⚙️</span>
                 <h3>Panel de Administración</h3>
                 <p>Control total del servidor, configuraciones del juego, gestión de equipos y eventos globales en tiempo real.</p>
                 <button class="tab-button">Administrar Juego</button>
+                <div class="coming-soon-overlay">
+                    <div class="coming-soon-text">🔒 PRÓXIMAMENTE</div>
+                    <div class="coming-soon-desc">Funcionalidad en desarrollo<br>Disponible pronto</div>
+                </div>
             </div>
 
-            <!-- Estadísticas en Tiempo Real -->
+            <!-- Estadísticas en Tiempo Real - HABILITADO -->
             <div class="tab-card" onclick="openTab('stats')">
                 <span class="tab-icon">📊</span>
                 <h3>Estadísticas en Tiempo Real</h3>
@@ -1419,15 +590,19 @@
                 <button class="tab-button">Ver Estadísticas</button>
             </div>
 
-            <!-- Control de Jugadores -->
-            <div class="tab-card" onclick="openTab('players')">
+            <!-- Control de Jugadores - DESHABILITADO -->
+            <div class="tab-card disabled">
                 <span class="tab-icon">👥</span>
                 <h3>Control de Jugadores</h3>
                 <p>Moderación, gestión de usuarios, formación de equipos, roles asignados y sistema de reportes.</p>
                 <button class="tab-button">Gestionar Jugadores</button>
+                <div class="coming-soon-overlay">
+                    <div class="coming-soon-text">🔒 PRÓXIMAMENTE</div>
+                    <div class="coming-soon-desc">Funcionalidad en desarrollo<br>Disponible pronto</div>
+                </div>
             </div>
 
-            <!-- Sistema de Logs -->
+            <!-- Sistema de Logs - HABILITADO -->
             <div class="tab-card" onclick="openTab('logs')">
                 <span class="tab-icon">📝</span>
                 <h3>Sistema de Logs</h3>
@@ -1435,28 +610,289 @@
                 <button class="tab-button">Ver Logs</button>
             </div>
 
-            <!-- Configuraciones Remotas -->
-            <div class="tab-card" onclick="openTab('config')">
+            <!-- Configuraciones Remotas - DESHABILITADO -->
+            <div class="tab-card disabled">
                 <span class="tab-icon">🔧</span>
                 <h3>Configuraciones Remotas</h3>
                 <p>Ajustes del juego, parámetros de balance, eventos programados y actualizaciones de contenido.</p>
                 <button class="tab-button">Configurar</button>
+                <div class="coming-soon-overlay">
+                    <div class="coming-soon-text">🔒 PRÓXIMAMENTE</div>
+                    <div class="coming-soon-desc">Funcionalidad en desarrollo<br>Disponible pronto</div>
+                </div>
             </div>
 
-            <!-- Monitor de Sincronización -->
-            <div class="tab-card" onclick="openTab('sync')">
+            <!-- Monitor de Sincronización - DESHABILITADO -->
+            <div class="tab-card disabled">
                 <span class="tab-icon">🔄</span>
                 <h3>Monitor de Sincronización</h3>
                 <p>Estado de conexión Roblox-Web, sistema de archivación, backups automáticos y continuidad de datos.</p>
                 <button class="tab-button">Ver Sincronización</button>
+                <div class="coming-soon-overlay">
+                    <div class="coming-soon-text">🔒 PRÓXIMAMENTE</div>
+                    <div class="coming-soon-desc">Funcionalidad en desarrollo<br>Disponible pronto</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Modales para el Mundo Post-Apocalíptico -->
-    
-    <!-- Modal Tierras Baldías -->
-    <div class="modal" id="wastelandModal">
-        <div class="modal-content world-modal">
+    <!-- Modal para Estadísticas -->
+    <div class="modal" id="statsModal">
+        <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">🏜️ Tierras
+                <h2 class="modal-title">📊 Estadísticas en Tiempo Real</h2>
+                <button class="close-btn" onclick="closeModal('statsModal')">&times;</button>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">147</span>
+                    <p>Jugadores Activos</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">49</span>
+                    <p>Equipos Formados</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">312</span>
+                    <p>Estructuras Construidas</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">23</span>
+                    <p>Eventos Completados</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1,847</span>
+                    <p>Mutantes Eliminados</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">98.2%</span>
+                    <p>Uptime del Servidor</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Logs -->
+    <div class="modal" id="logsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">📝 Sistema de Logs</h2>
+                <button class="close-btn" onclick="closeModal('logsModal')">&times;</button>
+            </div>
+            <div style="max-height: 400px; overflow-y: auto;">
+                <div class="log-entry">
+                    <div class="log-time">15:47:23</div>
+                    <div>✅ Equipo "Alpha" completó construcción de Refugio Básico</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">15:45:12</div>
+                    <div>⚔️ Invasión de mutantes iniciada en Zona Norte</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">15:43:08</div>
+                    <div>🔄 Sincronización con web completada exitosamente</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">15:41:55</div>
+                    <div>👥 Nuevo equipo formado: Scavenger_Pro, Tech_Master, Medic_Elite</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">15:40:30</div>
+                    <div>🌙 Ciclo nocturno iniciado - Spawn de mutantes aumentado</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">15:38:15</div>
+                    <div>🏗️ Nueva base establecida en Sector 7</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">15:36:42</div>
+                    <div>💊 Suministros médicos distribuidos a equipos activos</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">15:35:18</div>
+                    <div>🌍 Evento global "Aurora Borealis" completado exitosamente</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 MaxVicioHack - Echoes of Tomorrow Dashboard</p>
+        <p>Desarrollado por MaxVicioHack & ChuyMine | Acceso Restringido</p>
+    </footer>
+
+    <script>
+        // Crear partículas animadas
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Abrir modales del mundo post-apocalíptico
+        function openWorldTab(worldType) {
+            // Por ahora solo mostrar alerta
+            alert(`🌍 Explorando zona: ${worldType.charAt(0).toUpperCase() + worldType.slice(1)}\n\n⚠️ Esta funcionalidad estará disponible próximamente.\n\n¡Mantente atento a las actualizaciones!`);
+        }
+
+        // Abrir modales de pestañas HABILITADAS
+        function openTab(tabName) {
+            const modal = document.getElementById(tabName + 'Modal');
+            if (modal) {
+                modal.classList.add('active');
+                
+                // Log específico
+                console.log(`Abriendo: ${tabName}`);
+                
+                // Actualizar datos en tiempo real al abrir
+                if (tabName === 'stats') {
+                    updateRealTimeData();
+                } else if (tabName === 'logs') {
+                    // Los logs ya están, pero podrían actualizarse
+                    console.log('📝 Logs system accessed');
+                }
+            }
+        }
+
+        // Cerrar modales
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+
+        // Simular datos en tiempo real
+        function updateRealTimeData() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                if (stat.textContent !== '98.2%') {
+                    const currentNum = parseInt(stat.textContent.replace(',', ''));
+                    const variation = Math.floor(Math.random() * 10) - 5;
+                    const newValue = Math.max(0, currentNum + variation);
+                    stat.textContent = newValue.toLocaleString();
+                }
+            });
+        }
+
+        // Agregar logs en tiempo real
+        function addNewLog() {
+            const logsContainer = document.querySelector('#logsModal .modal-content > div:last-child');
+            if (!logsContainer) return;
+            
+            const now = new Date();
+            const timeString = now.toTimeString().slice(0, 8);
+            
+            const logMessages = [
+                "🎮 Nuevo jugador conectado al servidor",
+                "🔧 Mantenimiento automático completado", 
+                "⚔️ Evento de combate contra mutantes finalizado",
+                "📊 Estadísticas del servidor actualizadas",
+                "🌍 Evento global programado para dentro de 2 horas",
+                "🏗️ Equipo completó construcción de estructura defensiva",
+                "💊 Recursos médicos reabastecidos en todas las zonas",
+                "🔄 Sincronización de datos completada exitosamente",
+                "⚡ Sistema de energía optimizado automáticamente",
+                "🎯 Nuevo record de cooperación entre equipos establecido"
+            ];
+            
+            const newLog = document.createElement('div');
+            newLog.className = 'log-entry';
+            newLog.innerHTML = `
+                <div class="log-time">${timeString}</div>
+                <div>${logMessages[Math.floor(Math.random() * logMessages.length)]}</div>
+            `;
+            
+            logsContainer.insertBefore(newLog, logsContainer.firstChild);
+            
+            // Mantener solo los últimos 15 logs
+            const logs = logsContainer.querySelectorAll('.log-entry');
+            if (logs.length > 15) {
+                logs[logs.length - 1].remove();
+            }
+        }
+
+        // Mostrar notificación de funciones deshabilitadas
+        function showDisabledNotification() {
+            // Crear notificación temporal
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(45deg, #ff6b6b, #ffa500);
+                color: #fff;
+                padding: 15px 25px;
+                border-radius: 10px;
+                font-weight: bold;
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+            `;
+            notification.innerHTML = `
+                🔒 Funcionalidad en desarrollo<br>
+                <small>Disponible próximamente</small>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remover después de 3 segundos
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease forwards';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Agregar listeners para cards deshabilitadas
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Actualizar estadísticas cada 8 segundos
+            setInterval(updateRealTimeData, 8000);
+            
+            // Agregar nuevo log cada 12 segundos
+            setInterval(addNewLog, 12000);
+            
+            // Listeners para cards deshabilitadas
+            const disabledCards = document.querySelectorAll('.tab-card.disabled');
+            disabledCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showDisabledNotification();
+                });
+            });
+            
+            console.log('🎮 Echoes of Tomorrow Dashboard - Versión Restringida Inicializada');
+            console.log('👨‍💻 MaxVicioHack & 🤖 ChuyMine');
+            console.log('✅ Habilitado: Estadísticas y Logs');
+            console.log('🔒 Deshabilitado: Admin, Jugadores, Config, Sync');
+        });
+
+        // Agregar estilos de animación para notificaciones
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
