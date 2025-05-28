@@ -898,926 +898,296 @@
             box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
         }
 
-        /* Estilos para Blog/Feed Social */
-        .blog-modal .modal-content {
-            max-width: 800px;
-            max-height: 90vh;
-        }
-
-        .blog-content {
-            max-height: 75vh;
+        /* Estilos para modales del mundo */
+        .world-modal {
+            max-width: 95vw;
+            max-height: 95vh;
             overflow-y: auto;
         }
 
-        .create-post {
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-
-        .post-composer {
-            display: flex;
-            flex-direction: column;
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Echoes of Tomorrow - Dashboard</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Partículas de fondo animadas */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #00ff88;
-            border-radius: 50%;
-            animation: float 6s infinite linear;
-            opacity: 0.7;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
-            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
-        }
-
-        /* Header principal */
-        .header {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 2px solid #00ff88;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-        }
-
-        .header h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #00ff88, #00ccff, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-            text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            color: #b0b0b0;
-            margin-bottom: 5px;
-        }
-
-        .version-badge {
-            display: inline-block;
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #000;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-
-        /* Botones de autenticación en header */
-        .auth-section {
-            margin-top: 15px;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .auth-btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .login-btn {
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #000;
-        }
-
-        .register-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            color: #fff;
-        }
-
-        .auth-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Botón para seguir en Roblox */
-        .roblox-follow-section {
-            margin-top: 15px;
-        }
-
-        .roblox-follow-btn {
-            background: linear-gradient(45deg, #00B2FF, #0082CC);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .roblox-follow-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 178, 255, 0.4);
-        }
-
-        /* Notificación flotante */
-        .floating-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(20px);
-            border: 2px solid #00B2FF;
-            border-radius: 15px;
-            padding: 20px;
-            z-index: 999;
-            animation: slideInNotification 0.5s ease;
-            max-width: 350px;
-            display: none;
-        }
-
-        @keyframes slideInNotification {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .notification-content {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .notification-icon {
-            font-size: 2rem;
-            color: #00B2FF;
-        }
-
-        .notification-text strong {
-            color: #00ff88;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .notification-text p {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        .notification-btn {
-            background: #00B2FF;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .notification-btn:hover {
-            background: #0082CC;
-            transform: scale(1.05);
-        }
-
-        .notification-close {
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            margin-left: 10px;
-        }
-
-        /* Contenedor principal */
-        .container {
-            max-width: 1400px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        /* Especificaciones técnicas */
-        .tech-specs-section {
-            margin: 40px 0;
-            padding: 40px;
-            background: rgba(255, 107, 107, 0.1);
-            border-radius: 20px;
-            border: 2px solid rgba(255, 107, 107, 0.3);
-            backdrop-filter: blur(20px);
-        }
-
-        .specs-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .specs-header h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .specs-grid {
+        .world-detailed-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
+            gap: 30px;
         }
 
-        .spec-card {
-            background: rgba(0, 0, 0, 0.4);
+        .world-section {
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             padding: 25px;
-            text-align: center;
-            border: 2px solid rgba(255, 107, 107, 0.3);
-            transition: all 0.4s ease;
+            border-left: 4px solid #ff6b6b;
         }
 
-        .spec-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
-            border-color: #ff6b6b;
-        }
-
-        .spec-number {
-            font-size: 3rem;
-            font-weight: bold;
+        .world-section h3 {
             color: #ff6b6b;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
-        }
-
-        .spec-label {
-            color: #b0b0b0;
-            font-size: 0.95rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Características del juego */
-        .game-features-section {
-            margin: 40px 0;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            border: 2px solid rgba(0, 204, 255, 0.3);
-            backdrop-filter: blur(20px);
-        }
-
-        .features-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .features-header h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #00ccff, #00ff88);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-
-        .features-header p {
-            color: #b0b0b0;
-            font-size: 1.2rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .feature-card:hover::before {
-            left: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .feature-card.world { border-color: rgba(0, 255, 136, 0.5); }
-        .feature-card.building { border-color: rgba(138, 43, 226, 0.5); }
-        .feature-card.construction { border-color: rgba(255, 193, 7, 0.5); }
-        .feature-card.combat { border-color: rgba(255, 107, 107, 0.5); }
-        .feature-card.roles { border-color: rgba(0, 204, 255, 0.5); }
-        .feature-card.ui { border-color: rgba(255, 165, 0, 0.5); }
-
-        .feature-icon {
-            font-size: 3rem;
+            font-size: 1.5rem;
             margin-bottom: 20px;
-            display: block;
-        }
-
-        .feature-card h3 {
-            color: #00ff88;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-
-        .feature-card p {
-            color: #b0b0b0;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tech-tag {
-            background: rgba(0, 204, 255, 0.2);
-            color: #00ccff;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border: 1px solid rgba(0, 204, 255, 0.3);
-        }
-
-        .feature-details {
-            display: grid;
-            gap: 8px;
-        }
-
-        .feature-detail {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            padding: 5px 0;
-            border-left: 3px solid #00ff88;
-            padding-left: 15px;
-            margin-left: 10px;
-        }
-
-        /* Sección de equipos */
-        .teams-section {
-            margin: 40px 0;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            border: 2px solid rgba(0, 255, 136, 0.3);
-            backdrop-filter: blur(20px);
-        }
-
-        .teams-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .teams-header h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-
-        .teams-header p {
-            color: #b0b0b0;
-            font-size: 1.2rem;
-        }
-
-        .teams-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .team-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            transition: all 0.4s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
-            border-color: #00ff88;
-        }
-
-        .team-banner {
-            height: 80px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .team-flag {
-            font-size: 2.5rem;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-        }
-
-        .team-info {
-            padding: 25px;
-        }
-
-        .team-info h3 {
-            color: #00ff88;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .team-members {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .member {
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .member.scavenger { background: rgba(255, 193, 7, 0.2); color: #ffc107; }
-        .member.tech { background: rgba(0, 204, 255, 0.2); color: #00ccff; }
-        .member.medic { background: rgba(40, 167, 69, 0.2); color: #28a745; }
-
-        .team-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
         }
 
-        .stat-item {
-            text-align: center;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.05);
+        /* Estilos para estadísticas ambientales */
+        .environment-stats {
+            display: grid;
+            gap: 15px;
+        }
+
+        .env-stat {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
             border-radius: 10px;
-            font-size: 0.85rem;
         }
 
-        .highlight {
-            color: #00ff88;
+        .env-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffa500);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        /* Estilos para recursos */
+        .resources-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid;
+        }
+
+        .resource-item.legendary {
+            background: rgba(255, 215, 0, 0.1);
+            border-left-color: #FFD700;
+        }
+
+        .resource-item.rare {
+            background: rgba(138, 43, 226, 0.1);
+            border-left-color: #8A2BE2;
+        }
+
+        .resource-item.common {
+            background: rgba(128, 128, 128, 0.1);
+            border-left-color: #808080;
+        }
+
+        .resource-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+
+        /* Estilos para peligros */
+        .dangers-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .danger-item {
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid;
+        }
+
+        .danger-item.high {
+            background: rgba(255, 107, 107, 0.1);
+            border-left-color: #ff6b6b;
+        }
+
+        .danger-item.medium {
+            background: rgba(255, 193, 7, 0.1);
+            border-left-color: #ffc107;
+        }
+
+        .danger-item.low {
+            background: rgba(40, 167, 69, 0.1);
+            border-left-color: #28a745;
+        }
+
+        .danger-level {
             font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 10px;
         }
 
-        /* Widget del grupo de Roblox */
-        .roblox-group-widget {
-            background: rgba(0, 178, 255, 0.1);
-            border: 2px solid rgba(0, 178, 255, 0.3);
-            border-radius: 20px;
-            padding: 25px;
-            margin: 40px 0;
-            backdrop-filter: blur(20px);
+        /* Estilos para tips de supervivencia */
+        .survival-tips {
+            display: grid;
+            gap: 15px;
         }
 
-        .widget-header {
+        .tip-card {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #00ff88;
+        }
+
+        /* Estilos para mutantes */
+        .mutant-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .mutant-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+        }
+
+        .mutant-card.runner { border-color: #28a745; }
+        .mutant-card.tank { border-color: #dc3545; }
+        .mutant-card.spitter { border-color: #ffc107; }
+        .mutant-card.alpha { border-color: #6f42c1; }
+
+        .mutant-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .mutant-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        .widget-header h3 {
-            color: #00B2FF;
-            font-size: 1.5rem;
+        .mutant-icon {
+            font-size: 2rem;
         }
 
-        .live-indicator {
-            background: linear-gradient(45deg, #ff4757, #ff6b6b);
-            color: white;
-            padding: 5px 12px;
+        .threat-level {
+            padding: 5px 10px;
             border-radius: 15px;
             font-size: 0.8rem;
             font-weight: bold;
-            animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        .threat-level.low { background: #28a745; color: white; }
+        .threat-level.medium { background: #ffc107; color: black; }
+        .threat-level.high { background: #dc3545; color: white; }
+        .threat-level.extreme { background: #6f42c1; color: white; }
+
+        .mutant-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
         }
 
-        .widget-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9rem;
         }
 
-        .group-info {
+        /* Estilos para estrategias y combos */
+        .combat-strategies,
+        .team-combos {
+            display: grid;
+            gap: 15px;
+        }
+
+        .strategy-card,
+        .combo-card {
+            background: rgba(0, 204, 255, 0.1);
+            border: 1px solid rgba(0, 204, 255, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #00ccff;
+        }
+
+        .combo-card.trinity { border-left-color: #ff6b6b; background: rgba(255, 107, 107, 0.1); }
+        .combo-card.protective { border-left-color: #28a745; background: rgba(40, 167, 69, 0.1); }
+        .combo-card.coordinated { border-left-color: #ffc107; background: rgba(255, 193, 7, 0.1); }
+
+        /* Estilos adicionales para el mundo */
+        .area-layout,
+        .poi-grid,
+        .coop-activities,
+        .exclusive-rewards {
+            display: grid;
+            gap: 15px;
+        }
+
+        .building-info,
+        .poi-item,
+        .coop-card,
+        .reward-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #00ccff;
+        }
+
+        .poi-item {
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
-        .group-icon {
-            font-size: 3rem;
-            color: #00B2FF;
-        }
-
-        .group-details strong {
-            color: #00ff88;
-            display: block;
-            font-size: 1.1rem;
-        }
-
-        .group-details p {
-            color: #b0b0b0;
-            margin: 5px 0;
-        }
-
-        .member-count, .online-count {
-            color: #00ccff;
-            font-weight: bold;
-        }
-
-        .join-group-btn {
-            background: linear-gradient(45deg, #00B2FF, #0082CC);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .join-group-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 178, 255, 0.4);
-        }
-
-        /* Sección del Mundo Post-Apocalíptico */
-        .apocalypse-world-section {
-            margin: 40px 0;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            border: 2px solid rgba(255, 107, 107, 0.3);
-            backdrop-filter: blur(20px);
-        }
-
-        .world-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .world-header h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #ff6b6b, #ffa500, #ff4757);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-
-        .world-header p {
-            color: #b0b0b0;
-            font-size: 1.2rem;
-        }
-
-        .world-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .world-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255, 107, 107, 0.3);
-            position: relative;
-        }
-
-        .world-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(255, 107, 107, 0.3);
-            border-color: #ff6b6b;
-        }
-
-        .world-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .wasteland-bg {
-            background: linear-gradient(135deg, #8B4513, #CD853F, #D2691E);
-            background-image: 
-                radial-gradient(circle at 30% 40%, rgba(139, 69, 19, 0.7) 0%, transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(210, 105, 30, 0.5) 0%, transparent 50%);
-        }
-
-        .ruins-bg {
-            background: linear-gradient(135deg, #2C3E50, #34495E, #5D6D7E);
-            background-image:
-                linear-gradient(45deg, transparent 40%, rgba(52, 73, 94, 0.3) 50%, transparent 60%),
-                linear-gradient(-45deg, transparent 40%, rgba(93, 109, 126, 0.3) 50%, transparent 60%);
-        }
-
-        .mutants-bg {
-            background: linear-gradient(135deg, #27AE60, #58D68D, #82E0AA);
-            background-image:
-                radial-gradient(circle at 20% 80%, rgba(39, 174, 96, 0.6) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(130, 224, 170, 0.4) 0%, transparent 50%);
-        }
-
-        .world-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .world-card:hover .world-image::before {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .world-info {
-            padding: 25px;
-        }
-
-        .world-info h3 {
-            color: #ff6b6b;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-
-        .world-info p {
-            color: #b0b0b0;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .world-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            color: #000;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .world-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.4);
-        }
-
-        /* Grid de pestañas */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        /* Tarjetas de pestañas */
-        .tab-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tab-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .tab-card:hover::before {
-            left: 100%;
-        }
-
-        .tab-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
-            border-color: #00ff88;
-        }
-
-        .tab-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            display: block;
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tab-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #00ff88;
-        }
-
-        .tab-card p {
-            color: #b0b0b0;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .tab-button {
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #000;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .tab-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.4);
-        }
-
-        /* Tab administrativa solo para Dueños */
-        .admin-only {
-            border: 1px solid rgba(255, 215, 0, 0.3) !important;
-        }
-
-        .admin-only .tab-icon {
-            background: linear-gradient(45deg, #FFD700, #FFA500) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            background-clip: text !important;
-        }
-
-        .admin-only h3 {
-            color: #FFD700 !important;
-        }
-
-        .admin-only .tab-button {
-            background: linear-gradient(45deg, #FFD700, #FFA500) !important;
-        }
-
-        /* Modal para pestañas */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-        }
-
-        .modal-content {
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(20px);
-            border: 2px solid #00ff88;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 90vw;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            animation: modalSlideIn 0.4s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from { transform: scale(0.8) translateY(50px); opacity: 0; }
-            to { transform: scale(1) translateY(0); opacity: 1; }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
-            padding-bottom: 20px;
-        }
-
-        .modal-title {
+        .poi-icon {
             font-size: 2rem;
-            color: #00ff88;
+            width: 50px;
+            text-align: center;
         }
 
-        .close-btn {
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .poi-difficulty {
+            color: #ffc107;
+            font-size: 0.9rem;
+            font-weight: bold;
         }
 
-        .close-btn:hover {
-            transform: scale(1.2);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
+        .reward-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .reward-item.legendary {
+            border-left-color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .reward-item.rare {
+            border-left-color: #8A2BE2;
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        .reward-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
         }
 
         /* Estilos para Blog/Feed Social */
@@ -2359,6 +1729,11 @@
             border-left: 3px solid #ffa500;
         }
 
+        .changelog-item.hybrid {
+            background: rgba(138, 43, 226, 0.1);
+            border-left: 3px solid #8A2BE2;
+        }
+
         /* Modales específicos de estadísticas */
         .stats-grid {
             display: grid;
@@ -2437,2363 +1812,45 @@
             margin-bottom: 5px;
         }
 
-        /* Footer con disclaimer */
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #666;
-            border-top: 1px solid rgba(0, 255, 136, 0.2);
-            margin-top: 60px;
-        }
-
-        .footer .disclaimer {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer .disclaimer p {
-            color: #888;
-            font-size: 0.85rem;
-        }
-
-        /* Efectos de loading */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(0, 255, 136, 0.3);
-            border-radius: 50%;
-            border-top-color: #00ff88;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Responsive para móviles */
-        @media (max-width: 768px) {
-            .header h1 { font-size: 2rem; }
-            .dashboard-grid { grid-template-columns: 1fr; }
-            .modal-content { padding: 20px; }
-            .teams-grid { grid-template-columns: 1fr; }
-            .widget-content { 
-                flex-direction: column; 
-                gap: 20px; 
-                text-align: center; 
-            }
-            .floating-notification {
-                position: fixed;
-                top: 10px;
-                left: 10px;
-                right: 10px;
-                max-width: none;
-            }
-            .notification-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-            .chat-container {
-                flex-direction: column;
-                height: auto;
-            }
-            .chat-sidebar {
-                width: 100%;
-                border-radius: 15px 15px 0 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Partículas animadas de fondo -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Notificación flotante de Roblox -->
-    <div class="floating-notification" id="robloxNotification">
-        <div class="notification-content">
-            <div class="notification-icon">🎮</div>
-            <div class="notification-text">
-                <strong>¡Síguenos en Roblox!</strong>
-                <p>Únete a la comunidad oficial</p>
-            </div>
-            <button class="notification-btn" onclick="followOnRoblox()">Seguir</button>
-            <button class="notification-close" onclick="closeNotification()">&times;</button>
-        </div>
-    </div>
-
-    <!-- Header principal -->
-    <header class="header">
-        <h1>🎮 ECHOES OF TOMORROW</h1>
-        <p>Panel de Administración - xTurbo & ChuyMinesitoo</p>
-        <span class="version-badge">v0.1.13-social</span>
-        
-        <!-- Botones de autenticación -->
-        <div class="auth-section">
-            <button class="auth-btn login-btn" onclick="openLoginModal()">🔐 Iniciar Sesión</button>
-            <button class="auth-btn register-btn" onclick="openRegisterModal()">📝 Registrarse</button>
-        </div>
-        
-        <!-- Botón para seguir en Roblox -->
-        <div class="roblox-follow-section">
-            <button class="roblox-follow-btn" onclick="followOnRoblox()">
-                🎮 Seguir a xTurbo en Roblox
-            </button>
-        </div>
-    </header>
-
-    <!-- Contenedor principal -->
-    <div class="container">
-        <!-- Especificaciones técnicas -->
-        <div class="tech-specs-section">
-            <div class="specs-header">
-                <h2>📊 Especificaciones Técnicas del Juego</h2>
-            </div>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <div class="spec-number" id="playersPerTeam">3</div>
-                    <div class="spec-label">Jugadores por Equipo</div>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-number" id="progressionLevels">50+</div>
-                    <div class="spec-label">Niveles de Progresión</div>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-number" id="structureTypes">15</div>
-                    <div class="spec-label">Tipos de Estructuras</div>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-number" id="mutantClasses">7</div>
-                    <div class="spec-label">Clases de Mutantes</div>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-number" id="uniqueItems">200+</div>
-                    <div class="spec-label">Items Únicos</div>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-number" id="dynamicEvents">24/7</div>
-                    <div class="spec-label">Eventos Dinámicos</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Características del juego -->
-        <div class="game-features-section">
-            <div class="features-header">
-                <h2>🎮 Características del Juego</h2>
-                <p>Funcionalidades únicas que hacen especial a Echoes of Tomorrow</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card world">
-                    <span class="feature-icon">🌍</span>
-                    <h3>Mundo Post-Apocalíptico</h3>
-                    <p>Extenso mundo abierto con ciudades destruidas, zonas radioactivas y oasis de supervivencia. El entorno cambia dinámicamente con tormentas radioactivas y eventos globales.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Terrain API</span>
-                        <span class="tech-tag">Lighting</span>
-                        <span class="tech-tag">Particles</span>
-                    </div>
-                    <div class="feature-details">
-                        <div class="feature-detail">• Generación procedural de ruinas urbanas</div>
-                        <div class="feature-detail">• Sistema de clima radioactivo dinámico</div>
-                        <div class="feature-detail">• Zones de peligro variables según eventos</div>
-                        <div class="feature-detail">• Puntos de spawn balanceados para equipos</div>
-                    </div>
-                </div>
-
-                <div class="feature-card building">
-                    <span class="feature-icon">🏢</span>
-                    <h3>Arquitectura en Ruinas</h3>
-                    <p>Estructuras modulares de edificios destruidos que permiten exploración vertical. Cada edificio contiene recursos ocultos, terminales hackeables y posibles amenazas mutantes.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">PathfindingService</span>
-                        <span class="tech-tag">Raycast</span>
-                        <span class="tech-tag">Physics</span>
-                    </div>
-                    <div class="feature-details">
-                        <div class="feature-detail">• Exploración vertical de rascacielos</div>
-                        <div class="feature-detail">• Sistema de metro subterráneo</div>
-                        <div class="feature-detail">• Terminales hackeables interactivos</div>
-                        <div class="feature-detail">• Recursos ocultos en múltiples niveles</div>
-                    </div>
-                </div>
-
-                <div class="feature-card construction">
-                    <span class="feature-icon">🔧</span>
-                    <h3>Construcción Cooperativa</h3>
-                    <p>Bases que evolucionan desde refugios básicos hasta fortalezas avanzadas. Cada mejora requiere cooperación activa de los 3 roles, creando gameplay único y social.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">DataStore</span>
-                        <span class="tech-tag">Building Tools</span>
-                        <span class="tech-tag">Team System</span>
-                    </div>
-                    <div class="feature-details">
-                        <div class="feature-detail">• Building System sincronizado</div>
-                        <div class="feature-detail">• Recursos compartidos automáticamente</div>
-                        <div class="feature-detail">• Defensa automática contra raids</div>
-                        <div class="feature-detail">• Upgrade paths únicos por rol</div>
-                    </div>
-                </div>
-
-                <div class="feature-card combat">
-                    <span class="feature-icon">⚔️</span>
-                    <h3>Combate Táctico por Equipos</h3>
-                    <p>Sistema de combate que premia la coordinación. Cada rol tiene fortalezas únicas y los combo attacks requieren timing perfecto entre los 3 jugadores.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">PathfindingService</span>
-                        <span class="tech-tag">RemoteEvents</span>
-                        <span class="tech-tag">Animation</span>
-                    </div>
-                    <div class="feature-details">
-                        <div class="feature-detail">• Formaciones tácticas automáticas</div>
-                        <div class="feature-detail">• Combo attacks sincronizados</div>
-                        <div class="feature-detail">• IA adaptativa de enemigos</div>
-                        <div class="feature-detail">• Sistema de cobertura inteligente</div>
-                    </div>
-                </div>
-
-                <div class="feature-card roles">
-                    <span class="feature-icon">👥</span>
-                    <h3>Roles Especializados</h3>
-                    <p>Cada jugador asume un rol único con habilidades, equipamiento y responsabilidades específicas. La interdependencia entre roles es fundamental para el éxito del equipo.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Teams</span>
-                        <span class="tech-tag">UserInput</span>
-                        <span class="tech-tag">Badges</span>
-                    </div>
-                    <div class="feature-details">
-                        <div class="feature-detail">• 🎒 Scavenger: Exploración y recursos</div>
-                        <div class="feature-detail">• 🔧 Tech: Construcción y tecnología</div>
-                        <div class="feature-detail">• 🏥 Medic: Curación y supervivencia</div>
-                        <div class="feature-detail">• Habilidades únicas e interdependientes</div>
-                    </div>
-                </div>
-
-                <div class="feature-card ui">
-                    <span class="feature-icon">💻</span>
-                    <h3>Interface Avanzada</h3>
-                    <p>UI moderna y funcional con elementos específicos para trabajo en equipo. HUD adaptativo según el rol, inventario compartido y sistemas de comunicación integrados.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">ScreenGui</span>
-                        <span class="tech-tag">TweenService</span>
-                        <span class="tech-tag">UserInputService</span>
-                    </div>
-                    <div class="feature-details">
-                        <div class="feature-detail">• HUD específico por especialización</div>
-                        <div class="feature-detail">• Comunicación visual entre equipo</div>
-                        <div class="feature-detail">• Inventory compartido inteligente</div>
-                        <div class="feature-detail">• Objetivos cooperativos en tiempo real</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sección de equipos -->
-        <div class="teams-section">
-            <div class="teams-header">
-                <h2>👥 Equipos Formados</h2>
-                <p>Clanes activos en el mundo post-apocalíptico</p>
-            </div>
-            
-            <div class="teams-grid">
-                <div class="team-card">
-                    <div class="team-banner" style="background: linear-gradient(45deg, #ff6b6b, #ffa500);">
-                        <span class="team-flag">🔥</span>
-                    </div>
-                    <div class="team-info">
-                        <h3>🏆 Alpha Survivors</h3>
-                        <div class="team-members">
-                            <span class="member scavenger">🎒 Scavenger_Pro</span>
-                            <span class="member tech">🔧 Tech_Master</span>
-                            <span class="member medic">🏥 Medic_Elite</span>
-                        </div>
-                        <div class="team-stats">
-                            <div class="stat-item">
-                                <strong>Nivel:</strong> <span
-<strong>Nivel:</strong> <span class="highlight">15</span>
-                            </div>
-                            <div class="stat-item">
-                                <strong>Victorias:</strong> <span class="highlight">47</span>
-                            </div>
-                            <div class="stat-item">
-                                <strong>Bases:</strong> <span class="highlight">3</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-banner" style="background: linear-gradient(45deg, #00ff88, #00ccff);">
-                        <span class="team-flag">⚡</span>
-                    </div>
-                    <div class="team-info">
-                        <h3>⚡ Storm Runners</h3>
-                        <div class="team-members">
-                            <span class="member scavenger">🎒 Speed_Hunter</span>
-                            <span class="member tech">🔧 Bolt_Builder</span>
-                            <span class="member medic">🏥 Quick_Heal</span>
-                        </div>
-                        <div class="team-stats">
-                            <div class="stat-item">
-                                <strong>Nivel:</strong> <span class="highlight">12</span>
-                            </div>
-                            <div class="stat-item">
-                                <strong>Victorias:</strong> <span class="highlight">31</span>
-                            </div>
-                            <div class="stat-item">
-                                <strong>Bases:</strong> <span class="highlight">2</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-banner" style="background: linear-gradient(45deg, #8A2BE2, #6f42c1);">
-                        <span class="team-flag">💀</span>
-                    </div>
-                    <div class="team-info">
-                        <h3>💀 Shadow Clan</h3>
-                        <div class="team-members">
-                            <span class="member scavenger">🎒 Night_Stalker</span>
-                            <span class="member tech">🔧 Dark_Engineer</span>
-                            <span class="member medic">🏥 Ghost_Medic</span>
-                        </div>
-                        <div class="team-stats">
-                            <div class="stat-item">
-                                <strong>Nivel:</strong> <span class="highlight">18</span>
-                            </div>
-                            <div class="stat-item">
-                                <strong>Victorias:</strong> <span class="highlight">63</span>
-                            </div>
-                            <div class="stat-item">
-                                <strong>Bases:</strong> <span class="highlight">4</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Widget del Grupo de Roblox -->
-        <div class="roblox-group-widget">
-            <div class="widget-header">
-                <h3>🎮 Grupo Oficial de Roblox</h3>
-                <span class="live-indicator">🔴 EN VIVO</span>
-            </div>
-            <div class="widget-content">
-                <div class="group-info">
-                    <div class="group-icon">🏆</div>
-                    <div class="group-details">
-                        <strong>Echoes of Tomorrow Official</strong>
-                        <p>Miembros: <span class="member-count">1,247</span></p>
-                        <p>Online ahora: <span class="online-count">89</span></p>
-                    </div>
-                </div>
-                <button class="join-group-btn" onclick="joinRobloxGroup()">
-                    Unirse al Grupo
-                </button>
-            </div>
-        </div>
-
-        <!-- Sección del Mundo Post-Apocalíptico -->
-        <div class="apocalypse-world-section">
-            <div class="world-header">
-                <h2>🌍 Mundo Post-Apocalíptico</h2>
-                <p>Explora los detalles del devastado mundo de Echoes of Tomorrow</p>
-            </div>
-            
-            <div class="world-preview">
-                <div class="world-card" onclick="openWorldTab('wasteland')">
-                    <div class="world-image wasteland-bg"></div>
-                    <div class="world-info">
-                        <h3>🏜️ Tierras Baldías</h3>
-                        <p>Vastas extensiones de tierra devastada por la radiación, donde solo los más valientes se aventuran.</p>
-                        <button class="world-btn">Explorar Wasteland</button>
-                    </div>
-                </div>
-                
-                <div class="world-card" onclick="openWorldTab('ruins')">
-                    <div class="world-image ruins-bg"></div>
-                    <div class="world-info">
-                        <h3>🏢 Ruinas Urbanas</h3>
-                        <p>Restos de grandes ciudades llenas de recursos valiosos y peligros mortales.</p>
-                        <button class="world-btn">Explorar Ruinas</button>
-                    </div>
-                </div>
-                
-                <div class="world-card" onclick="openWorldTab('mutants')">
-                    <div class="world-image mutants-bg"></div>
-                    <div class="world-info">
-                        <h3>🧟 Zonas de Mutantes</h3>
-                        <p>Territorios controlados por criaturas mutadas, extremadamente peligrosos pero ricos en recursos.</p>
-                        <button class="world-btn">Estudiar Mutantes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Grid de pestañas principales -->
-        <div class="dashboard-grid">
-            <!-- Panel de Administración -->
-            <div class="tab-card" onclick="openTab('admin')">
-                <span class="tab-icon">⚙️</span>
-                <h3>Panel de Administración</h3>
-                <p>Control total del servidor, configuraciones del juego, gestión de equipos y eventos globales en tiempo real.</p>
-                <button class="tab-button">Administrar Juego</button>
-            </div>
-
-            <!-- Estadísticas en Tiempo Real -->
-            <div class="tab-card" onclick="openTab('stats')">
-                <span class="tab-icon">📊</span>
-                <h3>Estadísticas en Tiempo Real</h3>
-                <p>Métricas de jugadores activos, equipos formados, construcciones completadas y eventos en curso.</p>
-                <button class="tab-button">Ver Estadísticas</button>
-            </div>
-
-            <!-- Control de Jugadores -->
-            <div class="tab-card" onclick="openTab('players')">
-                <span class="tab-icon">👥</span>
-                <h3>Control de Jugadores</h3>
-                <p>Moderación, gestión de usuarios, formación de equipos, roles asignados y sistema de reportes.</p>
-                <button class="tab-button">Gestionar Jugadores</button>
-            </div>
-
-            <!-- Sistema de Logs -->
-            <div class="tab-card" onclick="openTab('logs')">
-                <span class="tab-icon">📝</span>
-                <h3>Sistema de Logs</h3>
-                <p>Registro completo de eventos del servidor, acciones de jugadores, errores y debugging en tiempo real.</p>
-                <button class="tab-button">Ver Logs</button>
-            </div>
-
-            <!-- Configuraciones Remotas -->
-            <div class="tab-card" onclick="openTab('config')">
-                <span class="tab-icon">🔧</span>
-                <h3>Configuraciones Remotas</h3>
-                <p>Ajustes del juego, parámetros de balance, eventos programados y actualizaciones de contenido.</p>
-                <button class="tab-button">Configurar</button>
-            </div>
-
-            <!-- Perfiles de Usuario -->
-            <div class="tab-card" onclick="openTab('profiles')">
-                <span class="tab-icon">👤</span>
-                <h3>Perfiles de Jugadores</h3>
-                <p>Explora perfiles de usuarios, stats del juego, equipos, logros y conecta con otros supervivientes.</p>
-                <button class="tab-button">Ver Perfiles</button>
-            </div>
-
-            <!-- Blog/Feed Social -->
-            <div class="tab-card" onclick="openTab('blog')">
-                <span class="tab-icon">📱</span>
-                <h3>Feed Social</h3>
-                <p>Red social integrada estilo Facebook. Publica, comenta, interactúa con otros supervivientes del apocalipsis.</p>
-                <button class="tab-button">Abrir Feed</button>
-            </div>
-
-            <!-- Sistema de Chat -->
-            <div class="tab-card" onclick="openTab('chat')">
-                <span class="tab-icon">💬</span>
-                <h3>Chat Global</h3>
-                <p>Comunícate en tiempo real con otros jugadores, forma alianzas y coordina estrategias de supervivencia.</p>
-                <button class="tab-button">Abrir Chat</button>
-            </div>
-
-            <!-- Sistema de Capturas del Juego -->
-            <div class="tab-card" onclick="openTab('captures')">
-                <span class="tab-icon">📸</span>
-                <h3>Capturas del Juego</h3>
-                <p>Galería de capturas tomadas por los jugadores directamente desde Roblox, organizadas por fecha y eventos.</p>
-                <button class="tab-button">Ver Galería</button>
-            </div>
-
-            <!-- README Borrador - SOLO DUEÑOS -->
-            <div class="tab-card admin-only" onclick="openTab('readme')" style="display: none;">
-                <span class="tab-icon">📋</span>
-                <h3>README Borrador</h3>
-                <p>Documentación en vivo del proyecto. Se actualiza automáticamente con cada cambio. Solo para Dueños.</p>
-                <button class="tab-button">Ver README</button>
-            </div>
-
-            <!-- Versiones Públicas -->
-            <div class="tab-card" onclick="openTab('versions')">
-                <span class="tab-icon">📱</span>
-                <h3>Versiones del Juego</h3>
-                <p>Historial público de versiones, actualizaciones y mejoras implementadas en Echoes of Tomorrow.</p>
-                <button class="tab-button">Ver Versiones</button>
-            </div>
-
-            <!-- Monitor de Sincronización -->
-            <div class="tab-card" onclick="openTab('sync')">
-                <span class="tab-icon">🔄</span>
-                <h3>Monitor de Sincronización</h3>
-                <p>Estado de conexión Roblox-Web, sistema de archivación, backups automáticos y continuidad de datos.</p>
-                <button class="tab-button">Ver Sincronización</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal del Blog/Feed Social -->
-    <div class="modal" id="blogModal">
-        <div class="modal-content blog-modal">
-            <div class="modal-header">
-                <h2 class="modal-title">📱 Feed Social - Echoes Community</h2>
-                <button class="close-btn" onclick="closeModal('blogModal')">&times;</button>
-            </div>
-            <div class="blog-content">
-                <!-- Crear nueva publicación -->
-                <div class="create-post">
-                    <div class="post-composer">
-                        <div class="composer-header">
-                            <img src="https://via.placeholder.com/50x50/00ff88/000000?text=U" alt="Usuario" class="composer-avatar">
-                            <div class="composer-info">
-                                <strong>¿Qué está pasando en tu supervivencia?</strong>
-                                <p>Comparte tus aventuras apocalípticas</p>
-                            </div>
-                        </div>
-                        <textarea class="post-input" placeholder="Cuéntanos sobre tu última misión, construcción épica, o encuentro con mutantes..."></textarea>
-                        <div class="composer-actions">
-                            <button class="action-icon" title="Agregar imagen">📸</button>
-                            <button class="action-icon" title="Reportar bug">🐛</button>
-                            <button class="action-icon" title="Ubicación">📍</button>
-                            <button class="action-icon" title="Equipo">👥</button>
-                            <button class="post-submit-btn">Publicar</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feed de publicaciones -->
-                <div class="posts-feed">
-                    <!-- Post 1 -->
-                    <div class="post-card">
-                        <div class="post-header">
-                            <img src="https://via.placeholder.com/50x50/00ff88/000000?text=XT" alt="xTurbo" class="post-avatar">
-                            <div class="post-info">
-                                <strong>xTurbo</strong> <span class="rank-badge owner">👑 Dueño</span>
-                                <div class="post-time">hace 2 horas • 🎮 En Zona Norte</div>
-                            </div>
-                            <div class="post-menu">⋯</div>
-                        </div>
-                        <div class="post-content">
-                            <p>¡ÉPICA batalla contra Alpha Mutant! 💥⚔️ Mi equipo y yo acabamos de derrotar al jefe más difícil del juego. La coordinación fue PERFECTA - el Medic nos mantuvo vivos, el Tech construyó defensas increíbles, y yo como Scavenger encontré el punto débil. ¡Echoes of Tomorrow es adictivo! 🔥</p>
-                            <div class="post-image" style="background: linear-gradient(45deg, #ff6b6b, #ffa500); height: 200px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 15px 0;">💥</div>
-                        </div>
-                        <div class="post-actions">
-                            <button class="action-btn like">❤️ 47</button>
-                            <button class="action-btn comment">💬 12</button>
-                            <button class="action-btn share">🔄 5</button>
-                            <button class="action-btn save">🔖</button>
-                        </div>
-                    </div>
-
-                    <!-- Post 2 -->
-                    <div class="post-card">
-                        <div class="post-header">
-                            <img src="https://via.placeholder.com/50x50/00ccff/000000?text=CM" alt="ChuyMinesitoo" class="post-avatar">
-                            <div class="post-info">
-                                <strong>ChuyMinesitoo</strong> <span class="rank-badge owner">👑 Dueño</span>
-                                <div class="post-time">hace 4 horas • 💻 Desarrollando</div>
-                            </div>
-                            <div class="post-menu">⋯</div>
-                        </div>
-                        <div class="post-content">
-                            <p>🚀 ¡Nueva actualización del dashboard lista! He implementado el sistema de capturas, perfiles detallados y ahora estamos trabajando en el feed social. ¡La web está quedando INCREÍBLE! Gracias xTurbo por la colaboración perfecta 💖</p>
-                            <div class="post-tags">
-                                <span class="tag">#Desarrollo</span>
-                                <span class="tag">#WebDev</span>
-                                <span class="tag">#EchoesOfTomorrow</span>
-                            </div>
-                        </div>
-                        <div class="post-actions">
-                            <button class="action-btn like">❤️ 23</button>
-                            <button class="action-btn comment">💬 8</button>
-                            <button class="action-btn share">🔄 3</button>
-                            <button class="action-btn save">🔖</button>
-                        </div>
-                    </div>
-
-                    <!-- Post 3 -->
-                    <div class="post-card">
-                        <div class="post-header">
-                            <img src="https://via.placeholder.com/50x50/ff6b6b/000000?text=MP" alt="MorePrincess5" class="post-avatar">
-                            <div class="post-info">
-                                <strong>MorePrincess5</strong> <span class="rank-badge owner">👑 Dueña</span>
-                                <div class="post-time">hace 1 día • 🏥 Salvando vidas</div>
-                            </div>
-                            <div class="post-menu">⋯</div>
-                        </div>
-                        <div class="post-content">
-                            <p>Como Medic del equipo, quiero compartir algunos tips de supervivencia: 💊 Siempre lleva doble antídoto en las Tierras Baldías, 🛡️ mantente cerca de tus compañeros durante tormentas de radiación, y 🔬 no olvides escanear antes de entrar a zonas desconocidas. ¡La cooperación es la clave!</p>
-                        </div>
-                        <div class="post-actions">
-                            <button class="action-btn like">❤️ 89</button>
-                            <button class="action-btn comment">💬 25</button>
-                            <button class="action-btn share">🔄 12</button>
-                            <button class="action-btn save">🔖</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal del Chat Global -->
-    <div class="modal" id="chatModal">
-        <div class="modal-content chat-modal">
-            <div class="modal-header">
-                <h2 class="modal-title">💬 Chat Global - Survivers Network</h2>
-                <button class="close-btn" onclick="closeModal('chatModal')">&times;</button>
-            </div>
-            <div class="chat-container">
-                <div class="chat-sidebar">
-                    <div class="chat-tabs">
-                        <button class="chat-tab active" onclick="switchChatTab('general')">🌍 General</button>
-                        <button class="chat-tab" onclick="switchChatTab('teams')">👥 Equipos</button>
-                        <button class="chat-tab" onclick="switchChatTab('trade')">💰 Comercio</button>
-                        <button class="chat-tab" onclick="switchChatTab('help')">❓ Ayuda</button>
-                    </div>
-                    <div class="online-users">
-                        <h4>📱 En línea (47)</h4>
-                        <div class="user-list">
-                            <div class="online-user owner">
-                                <span class="status-dot online"></span>
-                                <strong>xTurbo</strong> 👑
-                            </div>
-                            <div class="online-user owner">
-                                <span class="status-dot online"></span>
-                                <strong>ChuyMinesitoo</strong> 👑
-                            </div>
-                            <div class="online-user owner">
-                                <span class="status-dot away"></span>
-                                <strong>MorePrincess5</strong> 👑
-                            </div>
-                            <div class="online-user admin">
-                                <span class="status-dot online"></span>
-                                ShadowHunter ⚙️
-                            </div>
-                            <div class="online-user">
-                                <span class="status-dot online"></span>
-                                StormBreaker
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="chat-main">
-                    <div class="chat-messages" id="chatMessages">
-                        <div class="message owner">
-                            <img src="https://via.placeholder.com/40x40/00ff88/000000?text=XT" alt="xTurbo" class="message-avatar">
-                            <div class="message-content">
-                                <div class="message-header">
-                                    <strong>xTurbo</strong> <span class="rank-badge owner">👑</span>
-                                    <span class="message-time">15:47</span>
-                                </div>
-                                <div class="message-text">¡Hola supervivientes! ¿Alguien quiere formar equipo para la misión nocturna? 🌙⚔️</div>
-                            </div>
-                        </div>
-
-                        <div class="message">
-                            <img src="https://via.placeholder.com/40x40/8A2BE2/ffffff?text=SH" alt="ShadowHunter" class="message-avatar">
-                            <div class="message-content">
-                                <div class="message-header">
-                                    <strong>ShadowHunter</strong> <span class="rank-badge admin">⚙️</span>
-                                    <span class="message-time">15:48</span>
-                                </div>
-                                <div class="message-text">¡Yo me apunto! Necesito un Tech y un Medic para completar el trío 🔧🏥</div>
-                            </div>
-                        </div>
-
-                        <div class="message owner">
-                            <img src="https://via.placeholder.com/40x40/00ccff/000000?text=CM" alt="ChuyMinesitoo" class="message-avatar">
-                            <div class="message-content">
-                                <div class="message-header">
-                                    <strong>ChuyMinesitoo</strong> <span class="rank-badge owner">👑</span>
-                                    <span class="message-time">15:49</span>
-                                </div>
-                                <div class="message-text">Actualización del dashboard lista! 🚀 Ahora tienen feed social y chat integrado. ¡Pruébenlo!</div>
-                            </div>
-                        </div>
-
-                        <div class="message">
-                            <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=GM" alt="GhostMedic" class="message-avatar">
-                            <div class="message-content">
-                                <div class="message-header">
-                                    <strong>GhostMedic</strong>
-                                    <span class="message-time">15:50</span>
-                                </div>
-                                <div class="message-text">¡Increíble trabajo ChuyMinesitoo! La web está quedando profesional 💖</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="chat-input-container">
-                        <input type="text" class="chat-input" placeholder="Escribe tu mensaje..." onkeypress="sendMessage(event)">
-                        <button class="chat-send-btn" onclick="sendChatMessage()">📤</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal README Borrador - SOLO DUEÑOS -->
-    <div class="modal" id="readmeModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">📋 README Borrador - Solo Dueños</h2>
-                <button class="close-btn" onclick="closeModal('readmeModal')">&times;</button>
-            </div>
-            <div class="readme-live-content">
-                <div class="readme-header">
-                    <h1>🎮 "ECHOES OF TOMORROW" - README BORRADOR</h1>
-                    <div class="live-update-indicator">
-                        <span class="pulse-dot"></span>
-                        Se actualiza automáticamente cada minuto
-                    </div>
-                </div>
-                
-                <div class="readme-section">
-                    <h2>📄 INFORMACIÓN DEL PROYECTO</h2>
-                    <ul>
-                        <li><strong>Nombre del Juego:</strong> Echoes of Tomorrow</li>
-                        <li><strong>Desarrollador Principal:</strong> xTurbo</li>
-                        <li><strong>Asistente de Desarrollo:</strong> ChuyMinesitoo</li>
-                        <li><strong>Co-fundadora:</strong> MorePrincess5</li>
-                        <li><strong>Plataforma:</strong> Roblox Studio</li>
-                        <li><strong>Versión Actual:</strong> v0.1.13-social</li>
-                    </ul>
-                </div>
-                
-                <div class="readme-section">
-                    <h2>🏷️ DERECHOS DE AUTOR</h2>
-                    <div class="copyright-box">
-                        © 2025 xTurbo, ChuyMinesitoo & MorePrincess5. Todos los derechos reservados.<br>
-                        "Echoes of Tomorrow" es propiedad intelectual del equipo de desarrollo.<br>
-                        Prohibida la reproducción total o parcial sin autorización.
-                    </div>
-                </div>
-                
-                <div class="readme-section">
-                    <h2>📋 HISTORIAL DE CAMBIOS RECIENTES</h2>
-                    <div class="changelog-recent">
-                        <div class="changelog-entry">
-                            <div class="changelog-date">v0.1.13-social - 28/05/2025</div>
-                            <div class="changelog-items">
-                                <div class="changelog-item added">📱 **AÑADIDO:** Feed Social completo estilo Facebook</div>
-                                <div class="changelog-item added">💬 **AÑADIDO:** Chat Global en tiempo real</div>
-                                <div class="changelog-item added">👥 **AÑADIDO:** Usuarios en línea con estados</div>
-                                <div class="changelog-item restricted">🔒 **RESTRINGIDO:** README ahora solo para Dueños</div>
-                                <div class="changelog-item improved">🔄 **AÑADIDO:** Sistema de versiones automático</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para Estadísticas -->
-    <div class="modal" id="statsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">📊 Estadísticas en Tiempo Real</h2>
-                <button class="close-btn" onclick="closeModal('statsModal')">&times;</button>
-            </div>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-number">147</span>
-                    <p>Jugadores Activos</p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">49</span>
-                    <p>Equipos Formados</p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">312</span>
-                    <p>Estructuras Construidas</p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">23</span>
-                    <p>Eventos Completados</p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">1,847</span>
-                    <p>Mutantes Eliminados</p>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">98.2%</span>
-                    <p>Uptime del Servidor</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para Logs -->
-    <div class="modal" id="logsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">📝 Sistema de Logs</h2>
-                <button class="close-btn" onclick="closeModal('logsModal')">&times;</button>
-            </div>
-            <div style="max-height: 400px; overflow-y: auto;">
-                <div class="log-entry">
-                    <div class="log-time">15:47:23</div>
-                    <div>✅ Equipo "Alpha" completó construcción de Refugio Básico</div>
-                </div>
-                <div class="log-entry">
-                    <div class="log-time">15:45:12</div>
-                    <div>⚔️ Invasión de mutantes iniciada en Zona Norte</div>
-                </div>
-                <div class="log-entry">
-                    <div class="log-time">15:43:08</div>
-                    <div>🔄 Sincronización con web completada exitosamente</div>
-                </div>
-                <div class="log-entry">
-                    <div class="log-time">15:41:55</div>
-                    <div>👥 Nuevo equipo formado: Scavenger_Pro, Tech_Master, Medic_Elite</div>
-                </div>
-                <div class="log-entry">
-                    <div class="log-time">15:40:30</div>
-                    <div>🌙 Ciclo nocturno iniciado - Spawn de mutantes aumentado</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Versiones Públicas -->
-    <div class="modal" id="versionsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">📱 Versiones del Juego</h2>
-                <button class="close-btn" onclick="closeModal('versionsModal')">&times;</button>
-            </div>
-            <div class="versions-content">
-                <div class="version-current">
-                    <h3>🚀 Versión Actual: v0.1.13-social</h3>
-                    <div class="version-status">
-                        <span class="status-badge live">🔴 EN VIVO</span>
-                        <span class="release-date">Lanzado: 28 de Mayo, 2025</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Acceso Restringido -->
-    <div class="modal restricted-modal" id="restrictedModal"><!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Echoes of Tomorrow - Dashboard</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Partículas de fondo animadas */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #00ff88;
-            border-radius: 50%;
-            animation: float 6s infinite linear;
-            opacity: 0.7;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
-            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
-        }
-
-        /* Header principal */
-        .header {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 2px solid #00ff88;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-        }
-
-        .header h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #00ff88, #00ccff, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-            text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            color: #b0b0b0;
-            margin-bottom: 5px;
-        }
-
-        .version-badge {
-            display: inline-block;
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #000;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-
-        /* Botones de autenticación en header */
-        .auth-section {
-            margin-top: 15px;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .auth-btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .login-btn {
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #000;
-        }
-
-        .register-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            color: #fff;
-        }
-
-        .auth-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Botón para seguir en Roblox */
-        .roblox-follow-section {
-            margin-top: 15px;
-        }
-
-        .roblox-follow-btn {
-            background: linear-gradient(45deg, #00B2FF, #0082CC);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .roblox-follow-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 178, 255, 0.4);
-        }
-
-        /* Notificación flotante */
-        .floating-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(20px);
-            border: 2px solid #00B2FF;
+        /* Estilos para Versiones Públicas */
+        .version-current {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 255, 0.1));
+            border: 2px solid #00ff88;
             border-radius: 15px;
-            padding: 20px;
-            z-index: 999;
-            animation: slideInNotification 0.5s ease;
-            max-width: 350px;
-            display: none;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
         }
 
-        @keyframes slideInNotification {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .notification-content {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .notification-icon {
-            font-size: 2rem;
-            color: #00B2FF;
-        }
-
-        .notification-text strong {
+        .version-current h3 {
             color: #00ff88;
-            display: block;
-            margin-bottom: 5px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
         }
 
-        .notification-text p {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            margin: 0;
+        .version-status {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
         }
 
-        .notification-btn {
-            background: #00B2FF;
-            color: white;
-            border: none;
+        .status-badge {
             padding: 8px 15px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .notification-btn:hover {
-            background: #0082CC;
-            transform: scale(1.05);
-        }
-
-        .notification-close {
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            margin-left: 10px;
-        }
-
-        /* Contenedor principal */
-        .container {
-            max-width: 1400px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        /* Especificaciones técnicas */
-        .tech-specs-section {
-            margin: 40px 0;
-            padding: 40px;
-            background: rgba(255, 107, 107, 0.1);
             border-radius: 20px;
-            border: 2px solid rgba(255, 107, 107, 0.3);
-            backdrop-filter: blur(20px);
-        }
-
-        .specs-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .specs-header h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
-        }
-
-        .spec-card {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            border: 2px solid rgba(255, 107, 107, 0.3);
-            transition: all 0.4s ease;
-        }
-
-        .spec-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
-            border-color: #ff6b6b;
-        }
-
-        .spec-number {
-            font-size: 3rem;
             font-weight: bold;
-            color: #ff6b6b;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
-        }
-
-        .spec-label {
-            color: #b0b0b0;
-            font-size: 0.95rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Características del juego */
-        .game-features-section {
-            margin: 40px 0;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            border: 2px solid rgba(0, 204, 255, 0.3);
-            backdrop-filter: blur(20px);
-        }
-
-        .features-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .features-header h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #00ccff, #00ff88);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-
-        .features-header p {
-            color: #b0b0b0;
-            font-size: 1.2rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .feature-card:hover::before {
-            left: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .feature-card.world { border-color: rgba(0, 255, 136, 0.5); }
-        .feature-card.building { border-color: rgba(138, 43, 226, 0.5); }
-        .feature-card.construction { border-color: rgba(255, 193, 7, 0.5); }
-        .feature-card.combat { border-color: rgba(255, 107, 107, 0.5); }
-        .feature-card.roles { border-color: rgba(0, 204, 255, 0.5); }
-        .feature-card.ui { border-color: rgba(255, 165, 0, 0.5); }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .feature-card h3 {
-            color: #00ff88;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-
-        .feature-card p {
-            color: #b0b0b0;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tech-tag {
-            background: rgba(0, 204, 255, 0.2);
-            color: #00ccff;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border: 1px solid rgba(0, 204, 255, 0.3);
-        }
-
-        .feature-details {
-            display: grid;
-            gap: 8px;
-        }
-
-        .feature-detail {
-            color: #b0b0b0;
             font-size: 0.9rem;
-            padding: 5px 0;
-            border-left: 3px solid #00ff88;
-            padding-left: 15px;
-            margin-left: 10px;
         }
 
-        /* Sección de equipos */
-        .teams-section {
-            margin: 40px 0;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            border: 2px solid rgba(0, 255, 136, 0.3);
-            backdrop-filter: blur(20px);
-        }
-
-        .teams-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .teams-header h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-
-        .teams-header p {
-            color: #b0b0b0;
-            font-size: 1.2rem;
-        }
-
-        .teams-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .team-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            transition: all 0.4s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
-            border-color: #00ff88;
-        }
-
-        .team-banner {
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .team-flag {
-            font-size: 2.5rem;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-        }
-
-        .team-info {
-            padding: 25px;
-        }
-
-        .team-info h3 {
-            color: #00ff88;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .team-members {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .member {
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .member.scavenger { background: rgba(255, 193, 7, 0.2); color: #ffc107; }
-        .member.tech { background: rgba(0, 204, 255, 0.2); color: #00ccff; }
-        .member.medic { background: rgba(40, 167, 69, 0.2); color: #28a745; }
-
-        .team-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            font-size: 0.85rem;
-        }
-
-        .highlight {
-            color: #00ff88;
-            font-weight: bold;
-        }
-
-        /* Widget del grupo de Roblox */
-        .roblox-group-widget {
-            background: rgba(0, 178, 255, 0.1);
-            border: 2px solid rgba(0, 178, 255, 0.3);
-            border-radius: 20px;
-            padding: 25px;
-            margin: 40px 0;
-            backdrop-filter: blur(20px);
-        }
-
-        .widget-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .widget-header h3 {
-            color: #00B2FF;
-            font-size: 1.5rem;
-        }
-
-        .live-indicator {
+        .status-badge.live {
             background: linear-gradient(45deg, #ff4757, #ff6b6b);
             color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
             animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .widget-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .group-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .group-icon {
-            font-size: 3rem;
-            color: #00B2FF;
-        }
-
-        .group-details strong {
-            color: #00ff88;
-            display: block;
-            font-size: 1.1rem;
-        }
-
-        .group-details p {
+        .release-date {
             color: #b0b0b0;
-            margin: 5px 0;
-        }
-
-        .member-count, .online-count {
-            color: #00ccff;
-            font-weight: bold;
-        }
-
-        .join-group-btn {
-            background: linear-gradient(45deg, #00B2FF, #0082CC);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .join-group-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 178, 255, 0.4);
-        }
-
-        /* Sección del Mundo Post-Apocalíptico */
-        .apocalypse-world-section {
-            margin: 40px 0;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            border: 2px solid rgba(255, 107, 107, 0.3);
-            backdrop-filter: blur(20px);
-        }
-
-        .world-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .world-header h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #ff6b6b, #ffa500, #ff4757);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-
-        .world-header p {
-            color: #b0b0b0;
-            font-size: 1.2rem;
-        }
-
-        .world-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .world-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255, 107, 107, 0.3);
-            position: relative;
-        }
-
-        .world-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(255, 107, 107, 0.3);
-            border-color: #ff6b6b;
-        }
-
-        .world-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .wasteland-bg {
-            background: linear-gradient(135deg, #8B4513, #CD853F, #D2691E);
-            background-image: 
-                radial-gradient(circle at 30% 40%, rgba(139, 69, 19, 0.7) 0%, transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(210, 105, 30, 0.5) 0%, transparent 50%);
-        }
-
-        .ruins-bg {
-            background: linear-gradient(135deg, #2C3E50, #34495E, #5D6D7E);
-            background-image:
-                linear-gradient(45deg, transparent 40%, rgba(52, 73, 94, 0.3) 50%, transparent 60%),
-                linear-gradient(-45deg, transparent 40%, rgba(93, 109, 126, 0.3) 50%, transparent 60%);
-        }
-
-        .mutants-bg {
-            background: linear-gradient(135deg, #27AE60, #58D68D, #82E0AA);
-            background-image:
-                radial-gradient(circle at 20% 80%, rgba(39, 174, 96, 0.6) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(130, 224, 170, 0.4) 0%, transparent 50%);
-        }
-
-        .world-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .world-card:hover .world-image::before {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .world-info {
-            padding: 25px;
-        }
-
-        .world-info h3 {
-            color: #ff6b6b;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-
-        .world-info p {
-            color: #b0b0b0;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .world-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            color: #000;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .world-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.4);
-        }
-
-        /* Grid de pestañas */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        /* Tarjetas de pestañas */
-        .tab-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tab-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .tab-card:hover::before {
-            left: 100%;
-        }
-
-        .tab-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
-            border-color: #00ff88;
-        }
-
-        .tab-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            display: block;
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tab-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #00ff88;
-        }
-
-        .tab-card p {
-            color: #b0b0b0;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .tab-button {
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #000;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .tab-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.4);
-        }
-
-        /* Tab administrativa solo para Dueños */
-        .admin-only {
-            border: 1px solid rgba(255, 215, 0, 0.3) !important;
-        }
-
-        .admin-only .tab-icon {
-            background: linear-gradient(45deg, #FFD700, #FFA500) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            background-clip: text !important;
-        }
-
-        .admin-only h3 {
-            color: #FFD700 !important;
-        }
-
-        .admin-only .tab-button {
-            background: linear-gradient(45deg, #FFD700, #FFA500) !important;
-        }
-
-        /* Modal para pestañas */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-        }
-
-        .modal-content {
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(20px);
-            border: 2px solid #00ff88;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 90vw;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            animation: modalSlideIn 0.4s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from { transform: scale(0.8) translateY(50px); opacity: 0; }
-            to { transform: scale(1) translateY(0); opacity: 1; }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
-            padding-bottom: 20px;
-        }
-
-        .modal-title {
-            font-size: 2rem;
-            color: #00ff88;
-        }
-
-        .close-btn {
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .close-btn:hover {
-            transform: scale(1.2);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
-        }
-
-        /* Estilos para Blog/Feed Social */
-        .blog-modal .modal-content {
-            max-width: 800px;
-            max-height: 90vh;
-        }
-
-        .blog-content {
-            max-height: 75vh;
-            overflow-y: auto;
-        }
-
-        .create-post {
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-
-        .post-composer {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .composer-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .composer-avatar {
-            width: 50px;
-            height: 50px;  
-            border-radius: 50%;
-            border: 2px solid #00ff88;
-        }
-
-        .composer-info strong {
-            color: #00ff88;
-            font-size: 1.1rem;
-        }
-
-        .composer-info p {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            margin: 5px 0 0 0;
-        }
-
-        .post-input {
-            background: rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 15px;
-            color: #ffffff;
-            font-size: 1rem;
-            min-height: 120px;
-            resize: vertical;
-            font-family: inherit;
-        }
-
-        .post-input:focus {
-            outline: none;
-            border-color: #00ff88;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-        }
-
-        .composer-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .action-icon {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: #00ccff;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
-
-        .action-icon:hover {
-            background: rgba(0, 204, 255, 0.2);
-            transform: scale(1.1);
-        }
-
-        .post-submit-btn {
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #000;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .post-submit-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
-        }
-
-        .posts-feed {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .post-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .post-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(0, 255, 136, 0.3);
-        }
-
-        .post-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .post-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid #00ff88;
-        }
-
-        .post-info {
-            flex: 1;
-        }
-
-        .post-info strong {
-            color: #ffffff;
-            font-size: 1.1rem;
-        }
-
-        .rank-badge {
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-left: 8px;
-        }
-
-        .rank-badge.owner {
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            color: #000;
-        }
-
-        .post-time {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            margin-top: 3px;
-        }
-
-        .post-menu {
-            color: #b0b0b0;
-            cursor: pointer;
-            font-size: 1.5rem;
-            padding: 5px;
-        }
-
-        .post-content {
-            margin-bottom: 15px;
-        }
-
-        .post-content p {
-            color: #e0e0e0;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .post-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .tag {
-            background: rgba(0, 204, 255, 0.2);
-            color: #00ccff;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border: 1px solid rgba(0, 204, 255, 0.3);
-        }
-
-        .post-actions {
-            display: flex;
-            gap: 20px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .action-btn {
-            background: none;
-            border: none;
-            color: #b0b0b0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            padding: 8px 12px;
-            border-radius: 15px;
-        }
-
-        .action-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #00ff88;
-        }
-
-        .action-btn.like:hover {
-            color: #ff6b6b;
-        }
-
-        /* Estilos para Chat */
-        .chat-modal .modal-content {
-            max-width: 1000px;
-            max-height: 90vh;
-        }
-
-        .chat-container {
-            display: flex;
-            height: 70vh;
-        }
-
-        .chat-sidebar {
-            width: 250px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 15px 0 0 15px;
-            padding: 20px;
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .chat-tabs {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .chat-tab {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #b0b0b0;
-            padding: 10px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: left;
-        }
-
-        .chat-tab.active,
-        .chat-tab:hover {
-            background: rgba(0, 255, 136, 0.1);
-            border-color: #00ff88;
-            color: #00ff88;
-        }
-
-        .online-users h4 {
-            color: #00ccff;
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
-
-        .user-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .online-user {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .online-user:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .online-user.owner {
-            background: rgba(255, 215, 0, 0.1);
-        }
-
-        .online-user.admin {
-            background: rgba(255, 107, 107, 0.1);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-
-        .status-dot.online {
-            background: #00ff88;
-        }
-
-        .status-dot.away {
-            background: #ffa500;
-        }
-
-        .chat-main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 0 15px 15px 0;
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .message {
-            display: flex;
-            gap: 12px;
-        }
-
-        .message-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid #00ccff;
-            flex-shrink: 0;
-        }
-
-        .message.owner .message-avatar {
-            border-color: #FFD700;
-        }
-
-        .message-content {
-            flex: 1;
-        }
-
-        .message-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 5px;
-        }
-
-        .message-header strong {
-            color: #ffffff;
-        }
-
-        .message-time {
-            color: #888;
-            font-size: 0.8rem;
-        }
-
-        .message-text {
-            color: #e0e0e0;
-            line-height: 1.4;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 10px 15px;
-            border-radius: 15px;
-            border-left: 3px solid #00ccff;
-        }
-
-        .message.owner .message-text {
-            border-left-color: #FFD700;
-        }
-
-        .chat-input-container {
-            padding: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            gap: 10px;
-        }
-
-        .chat-input {
-            flex: 1;
-            background: rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            padding: 12px 20px;
-            color: #ffffff;
-            font-size: 1rem;
-        }
-
-        .chat-input:focus {
-            outline: none;
-            border-color: #00ff88;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-        }
-
-        .chat-send-btn {
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #000;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
-
-        .chat-send-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
-        }
-
-        /* Estilos para README */
-        .readme-live-content {
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-
-        .readme-header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #00ff88;
-        }
-
-        .readme-header h1 {
-            color: #00ff88;
-            margin-bottom: 10px;
-        }
-
-        .live-update-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            color: #00ccff;
-            font-size: 0.9rem;
-        }
-
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: #00ff88;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .readme-section {
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 15px;
-        }
-
-        .readme-section h2 {
-            color: #00ccff;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .readme-section ul {
-            color: #b0b0b0;
-            line-height: 1.8;
-        }
-
-        .readme-section li {
-            margin-bottom: 5px;
-        }
-
-        .copyright-box {
-            background: rgba(255, 215, 0, 0.1);
-            border: 1px solid #FFD700;
-            border-radius: 10px;
-            padding: 15px;
-            color: #FFD700;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .changelog-recent {
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .changelog-entry {
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 20px;
-            border-left: 4px solid #00ff88;
-        }
-
-        .changelog-date {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #00ccff;
-            margin-bottom: 15px;
-        }
-
-        .changelog-items {
-            display: grid;
-            gap: 8px;
-        }
-
-        .changelog-item {
-            padding: 10px 15px;
-            border-radius: 8px;
             font-size: 0.95rem;
-        }
-
-        .changelog-item.added {
-            background: rgba(0, 255, 136, 0.1);
-            border-left: 3px solid #00ff88;
-        }
-
-        .changelog-item.improved {
-            background: rgba(0, 204, 255, 0.1);
-            border-left: 3px solid #00ccff;
-        }
-
-        .changelog-item.restricted {
-            background: rgba(255, 165, 0, 0.1);
-            border-left: 3px solid #ffa500;
-        }
-
-        /* Modales específicos de estadísticas */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .stat-card {
-            background: rgba(0, 204, 255, 0.1);
-            border: 1px solid rgba(0, 204, 255, 0.3);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #00ccff;
-            display: block;
-        }
-
-        .log-entry {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 4px solid #00ff88;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 0 10px 10px 0;
-        }
-
-        .log-time {
-            color: #00ccff;
-            font-size: 0.9rem;
-        }
-
-        /* Modal de acceso restringido */
-        .restricted-modal .modal-content {
-            border-color: #ffa500;
-            max-width: 600px;
-            text-align: center;
-        }
-
-        .restricted-modal .modal-title {
-            color: #ffa500;
-        }
-
-        .restricted-icon {
-            font-size: 5rem;
-            color: #ffa500;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .restricted-message {
-            font-size: 1.3rem;
-            color: #b0b0b0;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .contact-info {
-            background: rgba(255, 165, 0, 0.1);
-            border: 1px solid rgba(255, 165, 0, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .contact-info h4 {
-            color: #ffa500;
-            margin-bottom: 10px;
-        }
-
-        .contact-info p {
-            color: #b0b0b0;
-            margin-bottom: 5px;
         }
 
         /* Footer con disclaimer */
@@ -4862,6 +1919,13 @@
                 width: 100%;
                 border-radius: 15px 15px 0 0;
             }
+            .version-status {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .mutant-types {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -4886,7 +1950,7 @@
     <header class="header">
         <h1>🎮 ECHOES OF TOMORROW</h1>
         <p>Panel de Administración - xTurbo & ChuyMinesitoo</p>
-        <span class="version-badge">v0.1.13-social</span>
+        <span class="version-badge">v0.1.14-hybrid</span>
         
         <!-- Botones de autenticación -->
         <div class="auth-section">
@@ -5069,8 +2133,7 @@
                         </div>
                         <div class="team-stats">
                             <div class="stat-item">
-                                <strong>Nivel:</strong> <span
-								<strong>Nivel:</strong> <span class="highlight">15</span>
+                                <strong>Nivel:</strong> <span class="highlight">15</span>
                             </div>
                             <div class="stat-item">
                                 <strong>Victorias:</strong> <span class="highlight">47</span>
@@ -5288,6 +2351,312 @@
                 <h3>Monitor de Sincronización</h3>
                 <p>Estado de conexión Roblox-Web, sistema de archivación, backups automáticos y continuidad de datos.</p>
                 <button class="tab-button">Ver Sincronización</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modales para el Mundo Post-Apocalíptico -->
+    
+    <!-- Modal Tierras Baldías -->
+    <div class="modal" id="wastelandModal">
+        <div class="modal-content world-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">🏜️ Tierras Baldías - Wasteland</h2>
+                <button class="close-btn" onclick="closeModal('wastelandModal')">&times;</button>
+            </div>
+            <div class="world-detailed-content">
+                <div class="world-section">
+                    <h3>🌡️ Condiciones Ambientales</h3>
+                    <div class="environment-stats">
+                        <div class="env-stat">
+                            <span class="env-icon">☢️</span>
+                            <div>
+                                <strong>Radiación:</strong> Alta (50-80 RAD/h)
+                                <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
+                            </div>
+                        </div>
+                        <div class="env-stat">
+                            <span class="env-icon">🌡️</span>
+                            <div>
+                                <strong>Temperatura:</strong> Extrema (45-55°C día)
+                                <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+                            </div>
+                        </div>
+                        <div class="env-stat">
+                            <span class="env-icon">💧</span>
+                            <div>
+                                <strong>Humedad:</strong> Muy Baja (5-15%)
+                                <div class="progress-bar"><div class="progress" style="width: 10%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>🎯 Recursos Disponibles</h3>
+                    <div class="resources-grid">
+                        <div class="resource-item legendary">
+                            <span class="resource-icon">⚡</span>
+                            <div>
+                                <strong>Núcleos de Energía</strong>
+                                <p>Muy Raro - Solo en cráteres profundos</p>
+                            </div>
+                        </div>
+                        <div class="resource-item rare">
+                            <span class="resource-icon">🔩</span>
+                            <div>
+                                <strong>Metal Radiactivo</strong>
+                                <p>Raro - Requiere equipo de protección</p>
+                            </div>
+                        </div>
+                        <div class="resource-item common">
+                            <span class="resource-icon">🪨</span>
+                            <div>
+                                <strong>Chatarra Básica</strong>
+                                <p>Común - Dispersa por toda el área</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>⚠️ Peligros y Amenazas</h3>
+                    <div class="dangers-list">
+                        <div class="danger-item high">
+                            <span class="danger-level">🔴 ALTO</span>
+                            <strong>Tormentas de Radiación:</strong> Pueden aparecer sin aviso, causan daño masivo
+                        </div>
+                        <div class="danger-item medium">
+                            <span class="danger-level">🟡 MEDIO</span>
+                            <strong>Mutantes Errantes:</strong> Runners y Tanks patrullan el área
+                        </div>
+                        <div class="danger-item low">
+                            <span class="danger-level">🟢 BAJO</span>
+                            <strong>Deshidratación:</strong> Consumo de agua aumentado x2
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>💡 Estrategias de Supervivencia</h3>
+                    <div class="survival-tips">
+                        <div class="tip-card">
+                            <strong>🏥 Para el MEDIC:</strong> Llevar doble cantidad de antídotos y detectores de radiación
+                        </div>
+                        <div class="tip-card">
+                            <strong>🔧 Para el TECH:</strong> Usar drones para exploración remota y evitar exposición
+                        </div>
+                        <div class="tip-card">
+                            <strong>🎒 Para el SCAVENGER:</strong> Movimiento rápido es clave, no permanecer mucho tiempo
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Ruinas Urbanas -->
+    <div class="modal" id="ruinsModal">
+        <div class="modal-content world-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">🏢 Ruinas Urbanas - Urban Decay</h2>
+                <button class="close-btn" onclick="closeModal('ruinsModal')">&times;</button>
+            </div>
+            <div class="world-detailed-content">
+                <div class="world-section">
+                    <h3>🏙️ Estructura del Área</h3>
+                    <div class="area-layout">
+                        <div class="building-info">
+                            <h4>🏢 Rascacielos Colapsados</h4>
+                            <p>Perfecto para establecer bases elevadas. Múltiples niveles para explorar.</p>
+                        </div>
+                        <div class="building-info">
+                            <h4>🚇 Sistema de Metro</h4>
+                            <p>Conexiones subterráneas seguras entre edificios. Ideal para movimiento sigiloso.</p>
+                        </div>
+                        <div class="building-info">
+                            <h4>🏪 Centros Comerciales</h4>
+                            <p>Gran cantidad de recursos de supervivencia y equipamiento civil.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>🎯 Puntos de Interés</h3>
+                    <div class="poi-grid">
+                        <div class="poi-item">
+                            <span class="poi-icon">🏥</span>
+                            <div>
+                                <strong>Hospital Abandonado</strong>
+                                <p>Suministros médicos de alta calidad</p>
+                                <span class="poi-difficulty">Dificultad: Media</span>
+                            </div>
+                        </div>
+                        <div class="poi-item">
+                            <span class="poi-icon">🏭</span>
+                            <div>
+                                <strong>Complejo Industrial</strong>
+                                <p>Maquinaria pesada y metales raros</p>
+                                <span class="poi-difficulty">Dificultad: Alta</span>
+                            </div>
+                        </div>
+                        <div class="poi-item">
+                            <span class="poi-icon">🏫</span>
+                            <div>
+                                <strong>Universidad Técnica</strong>
+                                <p>Equipos electrónicos y planos de construcción</p>
+                                <span class="poi-difficulty">Dificultad: Baja</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>🤝 Oportunidades Cooperativas</h3>
+                    <div class="coop-activities">
+                        <div class="coop-card">
+                            <strong>🏗️ Construcción Vertical:</strong> Tech construye plataformas mientras Scavenger asegura materiales desde alturas
+                        </div>
+                        <div class="coop-card">
+                            <strong>🕳️ Exploración de Túneles:</strong> Medic detecta peligros mientras el equipo explora el metro
+                        </div>
+                        <div class="coop-card">
+                            <strong>⚡ Restauración de Energía:</strong> Tech reactiva generadores para iluminar áreas oscuras
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Zonas de Mutantes -->
+    <div class="modal" id="mutantsModal">
+        <div class="modal-content world-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">🧟 Zonas de Mutantes - Danger Zones</h2>
+                <button class="close-btn" onclick="closeModal('mutantsModal')">&times;</button>
+            </div>
+            <div class="world-detailed-content">
+                <div class="world-section">
+                    <h3>👹 Tipos de Mutantes</h3>
+                    <div class="mutant-types">
+                        <div class="mutant-card runner">
+                            <div class="mutant-header">
+                                <span class="mutant-icon">💨</span>
+                                <h4>Runners</h4>
+                                <span class="threat-level low">Amenaza: Baja</span>
+                            </div>
+                            <div class="mutant-stats">
+                                <div class="stat"><strong>HP:</strong> 150</div>
+                                <div class="stat"><strong>Velocidad:</strong> Muy Alta</div>
+                                <div class="stat"><strong>Ataque:</strong> Rápido pero débil</div>
+                            </div>
+                            <p><strong>Táctica:</strong> Atacan en manadas. Scavenger puede evadirlos fácilmente.</p>
+                        </div>
+
+                        <div class="mutant-card tank">
+                            <div class="mutant-header">
+                                <span class="mutant-icon">🛡️</span>
+                                <h4>Tanks</h4>
+                                <span class="threat-level high">Amenaza: Alta</span>
+                            </div>
+                            <div class="mutant-stats">
+                                <div class="stat"><strong>HP:</strong> 800</div>
+                                <div class="stat"><strong>Velocidad:</strong> Lenta</div>
+                                <div class="stat"><strong>Ataque:</strong> Devastador</div>
+                            </div>
+                            <p><strong>Táctica:</strong> Requiere coordinación total del equipo. Tech debe establecer torretas.</p>
+                        </div>
+
+                        <div class="mutant-card spitter">
+                            <div class="mutant-header">
+                                <span class="mutant-icon">🤢</span>
+                                <h4>Spitters</h4>
+                                <span class="threat-level medium">Amenaza: Media</span>
+                            </div>
+                            <div class="mutant-stats">
+                                <div class="stat"><strong>HP:</strong> 300</div>
+                                <div class="stat"><strong>Velocidad:</strong> Media</div>
+                                <div class="stat"><strong>Ataque:</strong> A distancia + veneno</div>
+                            </div>
+                            <p><strong>Táctica:</strong> Medic debe neutralizar el veneno inmediatamente.</p>
+                        </div>
+
+                        <div class="mutant-card alpha">
+                            <div class="mutant-header">
+                                <span class="mutant-icon">👑</span>
+                                <h4>Alpha Mutant</h4>
+                                <span class="threat-level extreme">Amenaza: EXTREMA</span>
+                            </div>
+                            <div class="mutant-stats">
+                                <div class="stat"><strong>HP:</strong> 2500</div>
+                                <div class="stat"><strong>Velocidad:</strong> Variable</div>
+                                <div class="stat"><strong>Ataque:</strong> Múltiples habilidades</div>
+                            </div>
+                            <p><strong>Táctica:</strong> Boss que requiere estrategia específica y cooperación perfecta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>💎 Recompensas Exclusivas</h3>
+                    <div class="exclusive-rewards">
+                        <div class="reward-item legendary">
+                            <span class="reward-icon">🧬</span>
+                            <div>
+                                <strong>ADN Mutante Puro</strong>
+                                <p>Solo se obtiene de Alpha Mutants. Permite crafting de items legendarios.</p>
+                            </div>
+                        </div>
+                        <div class="reward-item rare">
+                            <span class="reward-icon">💉</span>
+                            <div>
+                                <strong>Sueros de Inmunidad</strong>
+                                <p>Protección temporal contra ataques de mutantes.</p>
+                            </div>
+                        </div>
+                        <div class="reward-item rare">
+                            <span class="reward-icon">⚔️</span>
+                            <div>
+                                <strong>Armas Bio-Modificadas</strong>
+                                <p>Equipamiento especializado contra mutantes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>🎯 Estrategias de Combate Cooperativo</h3>
+                    <div class="combat-strategies">
+                        <div class="strategy-card">
+                            <h4>🔺 Formación Triángulo Defensivo</h4>
+                            <p>Medic en el centro, Tech y Scavenger en los flancos. Ideal contra múltiples Runners.</p>
+                        </div>
+                        <div class="strategy-card">
+                            <h4>📏 Línea de Asalto</h4>
+                            <p>Los tres en línea: Scavenger-Tech-Medic. Perfecta para enfrentar Tanks.</p>
+                        </div>
+                        <div class="strategy-card">
+                            <h4>🎭 Emboscada Coordinada</h4>
+                            <p>Scavenger distrae, Tech embosca, Medic da soporte. Efectiva contra Spitters.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="world-section">
+                    <h3>⚡ Combos Especiales de Equipo</h3>
+                    <div class="team-combos">
+                        <div class="combo-card trinity">
+                            <strong>⚡ Trinity Strike:</strong> Los 3 atacan simultáneamente - Daño masivo concentrado
+                        </div>
+                        <div class="combo-card protective">
+                            <strong>🛡️ Protective Formation:</strong> Medic buffa, Tech/Scavenger protegen - Defensa aumentada
+                        </div>
+                        <div class="combo-card coordinated">
+                            <strong>🎯 Coordinated Assault:</strong> Sincronización perfecta - Eficiencia máxima
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -5518,7 +2887,7 @@
                         <li><strong>Asistente de Desarrollo:</strong> ChuyMinesitoo</li>
                         <li><strong>Co-fundadora:</strong> MorePrincess5</li>
                         <li><strong>Plataforma:</strong> Roblox Studio</li>
-                        <li><strong>Versión Actual:</strong> v0.1.13-social</li>
+                        <li><strong>Versión Actual:</strong> v0.1.14-hybrid</li>
                     </ul>
                 </div>
                 
@@ -5534,6 +2903,19 @@
                 <div class="readme-section">
                     <h2>📋 HISTORIAL DE CAMBIOS RECIENTES</h2>
                     <div class="changelog-recent">
+                        <div class="changelog-entry">
+                            <div class="changelog-date">v0.1.14-hybrid - 28/05/2025</div>
+                            <div class="changelog-items">
+                                <div class="changelog-item hybrid">🔧 **HÍBRIDA:** Fusión perfecta de funcionalidades sociales + mundo detallado</div>
+                                <div class="changelog-item added">➕ **INTEGRADO:** Modales completos del mundo post-apocalíptico</div>
+                                <div class="changelog-item added">🧟 **AÑADIDO:** Sistema completo de mutantes (Runners, Tanks, Spitters, Alpha)</div>
+                                <div class="changelog-item added">⚔️ **AÑADIDO:** Combos especiales de equipo (Trinity Strike, etc.)</div>
+                                <div class="changelog-item added">📊 **AÑADIDO:** Estadísticas ambientales con barras de progreso</div>
+                                <div class="changelog-item improved">🎮 **MEJORADO:** Experiencia de usuario premium híbrida</div>
+                                <div class="changelog-item improved">🌟 **OPTIMIZADO:** Lo mejor de ambas versiones fusionado</div>
+                            </div>
+                        </div>
+                        
                         <div class="changelog-entry">
                             <div class="changelog-date">v0.1.13-social - 28/05/2025</div>
                             <div class="changelog-items">
@@ -5627,7 +3009,7 @@
             </div>
             <div class="versions-content">
                 <div class="version-current">
-                    <h3>🚀 Versión Actual: v0.1.13-social</h3>
+                    <h3>🚀 Versión Actual: v0.1.14-hybrid</h3>
                     <div class="version-status">
                         <span class="status-badge live">🔴 EN VIVO</span>
                         <span class="release-date">Lanzado: 28 de Mayo, 2025</span>
@@ -5682,6 +3064,26 @@
                 particle.style.animationDelay = Math.random() * 6 + 's';
                 particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
                 particles.appendChild(particle);
+            }
+        }
+
+        // Abrir modales del mundo post-apocalíptico
+        function openWorldTab(worldType) {
+            const modal = document.getElementById(worldType + 'Modal');
+            if (modal) {
+                modal.classList.add('active');
+                
+                // Log específico para cada zona
+                console.log(`Explorando: ${worldType.charAt(0).toUpperCase() + worldType.slice(1)} Zone`);
+                
+                // Efectos especiales por zona
+                if (worldType === 'wasteland') {
+                    console.log('⚠️ Cuidado con la radiación extrema');
+                } else if (worldType === 'ruins') {
+                    console.log('🏢 Explorando ruinas urbanas...');
+                } else if (worldType === 'mutants') {
+                    console.log('🧟 PELIGRO: Zona de mutantes detectada');
+                }
             }
         }
 
@@ -6006,1805 +3408,18 @@
             `;
             document.head.appendChild(style);
             
-            console.log('🎮 Echoes of Tomorrow Dashboard - v0.1.13-social Inicializada');
+            console.log('🎮 Echoes of Tomorrow Dashboard - v0.1.14-hybrid Inicializada');
             console.log('👨‍💻 xTurbo, 🤖 ChuyMinesitoo & 👑 MorePrincess5');
-            console.log('✅ SISTEMA SOCIAL COMPLETO IMPLEMENTADO:');
+            console.log('✅ VERSIÓN HÍBRIDA COMPLETA IMPLEMENTADA:');
+            console.log('🌍 Modales detallados del mundo post-apocalíptico');
+            console.log('🧟 Sistema completo de mutantes con combos especiales');
             console.log('📱 Feed Social estilo Facebook funcionando');
             console.log('💬 Chat Global en tiempo real activo');
             console.log('📋 README Borrador integrado - Solo para Dueños');
-            console.log('🔄 Sistema de versiones automático activado');
-            console.log('🚀 Web lista para migración a Firebase');
+            console.log('📊 Estadísticas ambientales con barras de progreso');
+            console.log('🚀 Dashboard híbrido listo para migración a Firebase');
         });
     </script>
 </body>
-</html><!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Echoes of Tomorrow - Dashboard</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Partículas de fondo animadas */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #00ff88;
-            border-radius: 50%;
-            animation: float 6s infinite linear;
-            opacity: 0.7;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
-            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
-        }
-
-        /* Header principal */
-        .header {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 2px solid #00ff88;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-        }
-
-        .header h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #00ff88, #00ccff, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-            text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            color: #b0b0b0;
-            margin-bottom: 5px;
-        }
-
-        .version-badge {
-            display: inline-block;
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #000;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-
-        /* Botones de autenticación en header */
-        .auth-section {
-            margin-top: 15px;
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .auth-btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .login-btn {
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #000;
-        }
-
-        .register-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            color: #fff;
-        }
-
-        .auth-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Botón para seguir en Roblox */
-        .roblox-follow-section {
-            margin-top: 15px;
-        }
-
-        .roblox-follow-btn {
-            background: linear-gradient(45deg, #00B2FF, #0082CC);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .roblox-follow-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 178, 255, 0.4);
-        }
-
-        /* Notificación flotante */
-        .floating-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(20px);
-            border: 2px solid #00B2FF;
-            border-radius: 15px;
-            padding: 20px;
-            z-index: 999;
-            animation: slideInNotification 0.5s ease;
-            max-width: 350px;
-            display: none;
-        }
-
-        @keyframes slideInNotification {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .notification-content {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .notification-icon {
-            font-size: 2rem;
-            color: #00B2FF;
-        }
-
-        .notification-text strong {
-            color: #00ff88;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .notification-text p {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        .notification-btn {
-            background: #00B2FF;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .notification-btn:hover {
-            background: #0082CC;
-            transform: scale(1.05);
-        }
-
-        .notification-close {
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            margin-left: 10px;
-        }
-
-        /* Contenedor principal */
-        .container {
-            max-width: 1400px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        /* Especificaciones técnicas */
-        .tech-specs-section {
-            margin: 40px 0;
-            padding: 40px;
-            background: rgba(255, 107, 107, 0.1);
-            border-radius: 20px;
-            border: 2px solid rgba(255, 107, 107, 0.3);
-            backdrop-filter: blur(20px);
-        }
-
-        .specs-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .specs-header h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
-        }
-
-        .spec-card {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            border: 2px solid rgba(255, 107, 107, 0.3);
-            transition: all 0.4s ease;
-        }
-
-        .spec-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
-            border-color: #ff6b6b;
-        }
-
-        .spec-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #ff6b6b;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
-        }
-
-        .spec-label {
-            color: #b0b0b0;
-            font-size: 0.95rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Características del juego */
-        .game-features-section {
-            margin: 40px 0;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            border: 2px solid rgba(0, 204, 255, 0.3);
-            backdrop-filter: blur(20px);
-        }
-
-        .features-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .features-header h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #00ccff, #00ff88);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-
-        .features-header p {
-            color: #b0b0b0;
-            font-size: 1.2rem;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .feature-card:hover::before {
-            left: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .feature-card.world { border-color: rgba(0, 255, 136, 0.5); }
-        .feature-card.building { border-color: rgba(138, 43, 226, 0.5); }
-        .feature-card.construction { border-color: rgba(255, 193, 7, 0.5); }
-        .feature-card.combat { border-color: rgba(255, 107, 107, 0.5); }
-        .feature-card.roles { border-color: rgba(0, 204, 255, 0.5); }
-        .feature-card.ui { border-color: rgba(255, 165, 0, 0.5); }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .feature-card h3 {
-            color: #00ff88;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-
-        .feature-card p {
-            color: #b0b0b0;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tech-tag {
-            background: rgba(0, 204, 255, 0.2);
-            color: #00ccff;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border: 1px solid rgba(0, 204, 255, 0.3);
-        }
-
-        .feature-details {
-            display: grid;
-            gap: 8px;
-        }
-
-        .feature-detail {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            padding: 5px 0;
-            border-left: 3px solid #00ff88;
-            padding-left: 15px;
-            margin-left: 10px;
-        }
-
-        /* Sección de equipos */
-        .teams-section {
-            margin: 40px 0;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            border: 2px solid rgba(0, 255, 136, 0.3);
-            backdrop-filter: blur(20px);
-        }
-
-        .teams-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .teams-header h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-
-        .teams-header p {
-            color: #b0b0b0;
-            font-size: 1.2rem;
-        }
-
-        .teams-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .team-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            transition: all 0.4s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
-            border-color: #00ff88;
-        }
-
-        .team-banner {
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .team-flag {
-            font-size: 2.5rem;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-        }
-
-        .team-info {
-            padding: 25px;
-        }
-
-        .team-info h3 {
-            color: #00ff88;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .team-members {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .member {
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .member.scavenger { background: rgba(255, 193, 7, 0.2); color: #ffc107; }
-        .member.tech { background: rgba(0, 204, 255, 0.2); color: #00ccff; }
-        .member.medic { background: rgba(40, 167, 69, 0.2); color: #28a745; }
-
-        .team-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            font-size: 0.85rem;
-        }
-
-        .highlight {
-            color: #00ff88;
-            font-weight: bold;
-        }
-
-        /* Widget del grupo de Roblox */
-        .roblox-group-widget {
-            background: rgba(0, 178, 255, 0.1);
-            border: 2px solid rgba(0, 178, 255, 0.3);
-            border-radius: 20px;
-            padding: 25px;
-            margin: 40px 0;
-            backdrop-filter: blur(20px);
-        }
-
-        .widget-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .widget-header h3 {
-            color: #00B2FF;
-            font-size: 1.5rem;
-        }
-
-        .live-indicator {
-            background: linear-gradient(45deg, #ff4757, #ff6b6b);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .widget-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .group-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .group-icon {
-            font-size: 3rem;
-            color: #00B2FF;
-        }
-
-        .group-details strong {
-            color: #00ff88;
-            display: block;
-            font-size: 1.1rem;
-        }
-
-        .group-details p {
-            color: #b0b0b0;
-            margin: 5px 0;
-        }
-
-        .member-count, .online-count {
-            color: #00ccff;
-            font-weight: bold;
-        }
-
-        .join-group-btn {
-            background: linear-gradient(45deg, #00B2FF, #0082CC);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .join-group-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 178, 255, 0.4);
-        }
-
-        /* Sección del Mundo Post-Apocalíptico */
-        .apocalypse-world-section {
-            margin: 40px 0;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            border: 2px solid rgba(255, 107, 107, 0.3);
-            backdrop-filter: blur(20px);
-        }
-
-        .world-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .world-header h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #ff6b6b, #ffa500, #ff4757);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-
-        .world-header p {
-            color: #b0b0b0;
-            font-size: 1.2rem;
-        }
-
-        .world-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .world-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255, 107, 107, 0.3);
-            position: relative;
-        }
-
-        .world-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(255, 107, 107, 0.3);
-            border-color: #ff6b6b;
-        }
-
-        .world-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .wasteland-bg {
-            background: linear-gradient(135deg, #8B4513, #CD853F, #D2691E);
-            background-image: 
-                radial-gradient(circle at 30% 40%, rgba(139, 69, 19, 0.7) 0%, transparent 50%),
-                radial-gradient(circle at 70% 60%, rgba(210, 105, 30, 0.5) 0%, transparent 50%);
-        }
-
-        .ruins-bg {
-            background: linear-gradient(135deg, #2C3E50, #34495E, #5D6D7E);
-            background-image:
-                linear-gradient(45deg, transparent 40%, rgba(52, 73, 94, 0.3) 50%, transparent 60%),
-                linear-gradient(-45deg, transparent 40%, rgba(93, 109, 126, 0.3) 50%, transparent 60%);
-        }
-
-        .mutants-bg {
-            background: linear-gradient(135deg, #27AE60, #58D68D, #82E0AA);
-            background-image:
-                radial-gradient(circle at 20% 80%, rgba(39, 174, 96, 0.6) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(130, 224, 170, 0.4) 0%, transparent 50%);
-        }
-
-        .world-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .world-card:hover .world-image::before {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .world-info {
-            padding: 25px;
-        }
-
-        .world-info h3 {
-            color: #ff6b6b;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-
-        .world-info p {
-            color: #b0b0b0;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .world-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            color: #000;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .world-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.4);
-        }
-
-        /* Grid de pestañas */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        /* Tarjetas de pestañas */
-        .tab-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tab-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .tab-card:hover::before {
-            left: 100%;
-        }
-
-        .tab-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
-            border-color: #00ff88;
-        }
-
-        .tab-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            display: block;
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tab-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #00ff88;
-        }
-
-        .tab-card p {
-            color: #b0b0b0;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .tab-button {
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #000;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .tab-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.4);
-        }
-
-        /* Tab administrativa solo para Dueños */
-        .admin-only {
-            border: 1px solid rgba(255, 215, 0, 0.3) !important;
-        }
-
-        .admin-only .tab-icon {
-            background: linear-gradient(45deg, #FFD700, #FFA500) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            background-clip: text !important;
-        }
-
-        .admin-only h3 {
-            color: #FFD700 !important;
-        }
-
-        .admin-only .tab-button {
-            background: linear-gradient(45deg, #FFD700, #FFA500) !important;
-        }
-
-        /* Modal para pestañas */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-        }
-
-        .modal-content {
-            background: rgba(26, 26, 46, 0.95);
-            backdrop-filter: blur(20px);
-            border: 2px solid #00ff88;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 90vw;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            animation: modalSlideIn 0.4s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from { transform: scale(0.8) translateY(50px); opacity: 0; }
-            to { transform: scale(1) translateY(0); opacity: 1; }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
-            padding-bottom: 20px;
-        }
-
-        .modal-title {
-            font-size: 2rem;
-            color: #00ff88;
-        }
-
-        .close-btn {
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .close-btn:hover {
-            transform: scale(1.2);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
-        }
-
-        /* Estilos para Blog/Feed Social */
-        .blog-modal .modal-content {
-            max-width: 800px;
-            max-height: 90vh;
-        }
-
-        .blog-content {
-            max-height: 75vh;
-            overflow-y: auto;
-        }
-
-        .create-post {
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-
-        .post-composer {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .composer-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .composer-avatar {
-            width: 50px;
-            height: 50px;  
-            border-radius: 50%;
-            border: 2px solid #00ff88;
-        }
-
-        .composer-info strong {
-            color: #00ff88;
-            font-size: 1.1rem;
-        }
-
-        .composer-info p {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            margin: 5px 0 0 0;
-        }
-
-        .post-input {
-            background: rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 15px;
-            color: #ffffff;
-            font-size: 1rem;
-            min-height: 120px;
-            resize: vertical;
-            font-family: inherit;
-        }
-
-        .post-input:focus {
-            outline: none;
-            border-color: #00ff88;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-        }
-
-        .composer-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .action-icon {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: #00ccff;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
-
-        .action-icon:hover {
-            background: rgba(0, 204, 255, 0.2);
-            transform: scale(1.1);
-        }
-
-        .post-submit-btn {
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #000;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .post-submit-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
-        }
-
-        .posts-feed {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .post-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .post-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(0, 255, 136, 0.3);
-        }
-
-        .post-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .post-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid #00ff88;
-        }
-
-        .post-info {
-            flex: 1;
-        }
-
-        .post-info strong {
-            color: #ffffff;
-            font-size: 1.1rem;
-        }
-
-        .rank-badge {
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-left: 8px;
-        }
-
-        .rank-badge.owner {
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            color: #000;
-        }
-
-        .post-time {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            margin-top: 3px;
-        }
-
-        .post-menu {
-            color: #b0b0b0;
-            cursor: pointer;
-            font-size: 1.5rem;
-            padding: 5px;
-        }
-
-        .post-content {
-            margin-bottom: 15px;
-        }
-
-        .post-content p {
-            color: #e0e0e0;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .post-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .tag {
-            background: rgba(0, 204, 255, 0.2);
-            color: #00ccff;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border: 1px solid rgba(0, 204, 255, 0.3);
-        }
-
-        .post-actions {
-            display: flex;
-            gap: 20px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .action-btn {
-            background: none;
-            border: none;
-            color: #b0b0b0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            padding: 8px 12px;
-            border-radius: 15px;
-        }
-
-        .action-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #00ff88;
-        }
-
-        .action-btn.like:hover {
-            color: #ff6b6b;
-        }
-
-        /* Estilos para Chat */
-        .chat-modal .modal-content {
-            max-width: 1000px;
-            max-height: 90vh;
-        }
-
-        .chat-container {
-            display: flex;
-            height: 70vh;
-        }
-
-        .chat-sidebar {
-            width: 250px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 15px 0 0 15px;
-            padding: 20px;
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .chat-tabs {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .chat-tab {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #b0b0b0;
-            padding: 10px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: left;
-        }
-
-        .chat-tab.active,
-        .chat-tab:hover {
-            background: rgba(0, 255, 136, 0.1);
-            border-color: #00ff88;
-            color: #00ff88;
-        }
-
-        .online-users h4 {
-            color: #00ccff;
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
-
-        .user-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .online-user {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .online-user:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .online-user.owner {
-            background: rgba(255, 215, 0, 0.1);
-        }
-
-        .online-user.admin {
-            background: rgba(255, 107, 107, 0.1);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-
-        .status-dot.online {
-            background: #00ff88;
-        }
-
-        .status-dot.away {
-            background: #ffa500;
-        }
-
-        .chat-main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 0 15px 15px 0;
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .message {
-            display: flex;
-            gap: 12px;
-        }
-
-        .message-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid #00ccff;
-            flex-shrink: 0;
-        }
-
-        .message.owner .message-avatar {
-            border-color: #FFD700;
-        }
-
-        .message-content {
-            flex: 1;
-        }
-
-        .message-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 5px;
-        }
-
-        .message-header strong {
-            color: #ffffff;
-        }
-
-        .message-time {
-            color: #888;
-            font-size: 0.8rem;
-        }
-
-        .message-text {
-            color: #e0e0e0;
-            line-height: 1.4;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 10px 15px;
-            border-radius: 15px;
-            border-left: 3px solid #00ccff;
-        }
-
-        .message.owner .message-text {
-            border-left-color: #FFD700;
-        }
-
-        .chat-input-container {
-            padding: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            gap: 10px;
-        }
-
-        .chat-input {
-            flex: 1;
-            background: rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            padding: 12px 20px;
-            color: #ffffff;
-            font-size: 1rem;
-        }
-
-        .chat-input:focus {
-            outline: none;
-            border-color: #00ff88;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-        }
-
-        .chat-send-btn {
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #000;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
-
-        .chat-send-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
-        }
-
-        /* Estilos para README */
-        .readme-live-content {
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-
-        .readme-header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #00ff88;
-        }
-
-        .readme-header h1 {
-            color: #00ff88;
-            margin-bottom: 10px;
-        }
-
-        .live-update-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            color: #00ccff;
-            font-size: 0.9rem;
-        }
-
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: #00ff88;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .readme-section {
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 15px;
-        }
-
-        .readme-section h2 {
-            color: #00ccff;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .readme-section ul {
-            color: #b0b0b0;
-            line-height: 1.8;
-        }
-
-        .readme-section li {
-            margin-bottom: 5px;
-        }
-
-        .copyright-box {
-            background: rgba(255, 215, 0, 0.1);
-            border: 1px solid #FFD700;
-            border-radius: 10px;
-            padding: 15px;
-            color: #FFD700;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .changelog-recent {
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .changelog-entry {
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 20px;
-            border-left: 4px solid #00ff88;
-        }
-
-        .changelog-date {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #00ccff;
-            margin-bottom: 15px;
-        }
-
-        .changelog-items {
-            display: grid;
-            gap: 8px;
-        }
-
-        .changelog-item {
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-        }
-
-        .changelog-item.added {
-            background: rgba(0, 255, 136, 0.1);
-            border-left: 3px solid #00ff88;
-        }
-
-        .changelog-item.improved {
-            background: rgba(0, 204, 255, 0.1);
-            border-left: 3px solid #00ccff;
-        }
-
-        .changelog-item.restricted {
-            background: rgba(255, 165, 0, 0.1);
-            border-left: 3px solid #ffa500;
-        }
-
-        /* Modales específicos de estadísticas */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .stat-card {
-            background: rgba(0, 204, 255, 0.1);
-            border: 1px solid rgba(0, 204, 255, 0.3);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #00ccff;
-            display: block;
-        }
-
-        .log-entry {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 4px solid #00ff88;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 0 10px 10px 0;
-        }
-
-        .log-time {
-            color: #00ccff;
-            font-size: 0.9rem;
-        }
-
-        /* Modal de acceso restringido */
-        .restricted-modal .modal-content {
-            border-color: #ffa500;
-            max-width: 600px;
-            text-align: center;
-        }
-
-        .restricted-modal .modal-title {
-            color: #ffa500;
-        }
-
-        .restricted-icon {
-            font-size: 5rem;
-            color: #ffa500;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .restricted-message {
-            font-size: 1.3rem;
-            color: #b0b0b0;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .contact-info {
-            background: rgba(255, 165, 0, 0.1);
-            border: 1px solid rgba(255, 165, 0, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .contact-info h4 {
-            color: #ffa500;
-            margin-bottom: 10px;
-        }
-
-        .contact-info p {
-            color: #b0b0b0;
-            margin-bottom: 5px;
-        }
-
-        /* Footer con disclaimer */
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #666;
-            border-top: 1px solid rgba(0, 255, 136, 0.2);
-            margin-top: 60px;
-        }
-
-        .footer .disclaimer {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer .disclaimer p {
-            color: #888;
-            font-size: 0.85rem;
-        }
-
-        /* Efectos de loading */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(0, 255, 136, 0.3);
-            border-radius: 50%;
-            border-top-color: #00ff88;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Responsive para móviles */
-        @media (max-width: 768px) {
-            .header h1 { font-size: 2rem; }
-            .dashboard-grid { grid-template-columns: 1fr; }
-            .modal-content { padding: 20px; }
-            .teams-grid { grid-template-columns: 1fr; }
-            .widget-content { 
-                flex-direction: column; 
-                gap: 20px; 
-                text-align: center; 
-            }
-            .floating-notification {
-                position: fixed;
-                top: 10px;
-                left: 10px;
-                right: 10px;
-                max-width: none;
-            }
-            .notification-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-            .chat-container {
-                flex-direction: column;
-                height: auto;
-            }
-            .chat-sidebar {
-                width: 100%;
-                border-radius: 15px 15px 0 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Partículas animadas de fondo -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Notificación flotante de Roblox -->
-    <div class="floating-notification" id="robloxNotification">
-        <div class="notification-content">
-            <div class="notification-icon">🎮</div>
-            <div class="notification-text">
-                <strong>¡Síguenos en Roblox!</strong>
-                <p>Únete a la comunidad oficial</p>
-            </div>
-            <button class="notification-btn" onclick="followOnRoblox()">Seguir</button>
-            <button class="notification-close" onclick="closeNotification()">&times;</button>
-        </div>
-    </div>
-
-    <!-- Header principal -->
-    <header class="header">
-        <h1>🎮 ECHOES OF TOMORROW</h1>
-        <p>Panel de Administración - xTurbo & ChuyMinesitoo</p>
-        <span class="version-badge">v0.1.13-social</span>
-        
-        <!-- Botones de autenticación -->
-        <div class="auth-section">
-            <button class="auth-btn login-btn" onclick="openLoginModal()">🔐 Iniciar Sesión</button>
-            <button class="auth-btn register-btn" onclick="openRegisterModal()">📝 Registrarse</button>
-        </div>
-        
-        <!-- Botón para seguir en Roblox -->
-        <div class="roblox-follow-section">
-            <button class="roblox-follow-btn" onclick="followOnRoblox()">
-                🎮 Seguir a xTurbo en Roblox
-            </button>
-        </div>
-    </header>
-
-    <!-- Contenedor principal -->
-    <div class="container">
-        <!-- Especificaciones técnicas -->
-        <div class="tech-specs-section">
-            <div class="specs-header">
-                <h2>📊 Especificaciones Técnicas del Juego</h2>
-            </div>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <div class="spec-number" id="playersPerTeam">3</div>
-                    <div class="spec-label">Jugadores por Equipo</div>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-number" id="progressionLevels">50+</div>
-                    <div class="spec-label">Niveles de Progresión</div>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-number" id="structureTypes">15</div>
-                    <div class="spec-label">Tipos de Estructuras</div>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-number" id="mutantClasses">7</div>
-                    <div class="spec-label">Clases de Mutantes</div>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-number" id="uniqueItems">200+</div>
-                    <div class="spec-label">Items Únicos</div>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-number" id="dynamicEvents">24/7</div>
-                    <div class="spec-label">Eventos Dinámicos</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Características del juego -->
-        <div class="game-features-section">
-            <div class="features-header">
-                <h2>🎮 Características del Juego</h2>
-                <p>Funcionalidades únicas que hacen especial a Echoes of Tomorrow</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card world">
-                    <span class="feature-icon">🌍</span>
-                    <h3>Mundo Post-Apocalíptico</h3>
-                    <p>Extenso mundo abierto con ciudades destruidas, zonas radioactivas y oasis de supervivencia. El entorno cambia dinámicamente con tormentas radioactivas y eventos globales.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Terrain API</span>
-                        <span class="tech-tag">Lighting</span>
-                        <span class="tech-tag">Particles</span>
-                    </div>
-                    <div class="feature-details">
-                        <div class="feature-detail">• Generación procedural de ruinas urbanas</div>
-                        <div class="feature-detail">• Sistema de clima radioactivo dinámico</div>
-                        <div class="feature-detail">• Zones de peligro variables según eventos</div>
-                        <div class="feature-detail">• Puntos de spawn balanceados para equipos</div>
-                    </div>
-                </div>
-
-                <div class="feature-card building">
-                    <span class="feature-icon">🏢</span>
-                    <h3>Arquitectura en Ruinas</h3>
-                    <p>Estructuras modulares de edificios destruidos que permiten exploración vertical. Cada edificio contiene recursos ocultos, terminales hackeables y posibles amenazas mutantes.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">PathfindingService</span>
-                        <span class="tech-tag">Raycast</span>
-                        <span class="tech-tag">Physics</span>
-                    </div>
-                    <div class="feature-details">
-                        <div class="feature-detail">• Exploración vertical de rascacielos</div>
-                        <div class="feature-detail">• Sistema de metro subterráneo</div>
-                        <div class="feature-detail">• Terminales hackeables interactivos</div>
-                        <div class="feature-detail">• Recursos ocultos en múltiples niveles</div>
-                    </div>
-                </div>
-
-                <div class="feature-card construction">
-                    <span class="feature-icon">🔧</span>
-                    <h3>Construcción Cooperativa</h3>
-                    <p>Bases que evolucionan desde refugios básicos hasta fortalezas avanzadas. Cada mejora requiere cooperación activa de los 3 roles, creando gameplay único y social.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">DataStore</span>
-                        <span class="tech-tag">Building Tools</span>
-                        <span class="tech-tag">Team System</span>
-                    </div>
-                    <div class="feature-details">
-                        <div class="feature-detail">• Building System sincronizado</div>
-                        <div class="feature-detail">• Recursos compartidos automáticamente</div>
-                        <div class="feature-detail">• Defensa automática contra raids</div>
-                        <div class="feature-detail">• Upgrade paths únicos por rol</div>
-                    </div>
-                </div>
-
-                <div class="feature-card combat">
-                    <span class="feature-icon">⚔️</span>
-                    <h3>Combate Táctico por Equipos</h3>
-                    <p>Sistema de combate que premia la coordinación. Cada rol tiene fortalezas únicas y los combo attacks requieren timing perfecto entre los 3 jugadores.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">PathfindingService</span>
-                        <span class="tech-tag">RemoteEvents</span>
-                        <span class="tech-tag">Animation</span>
-                    </div>
-                    <div class="feature-details">
-                        <div class="feature-detail">• Formaciones tácticas automáticas</div>
-                        <div class="feature-detail">• Combo attacks sincronizados</div>
-                        <div class="feature-detail">• IA adaptativa de enemigos</div>
-                        <div class="feature-detail">• Sistema de cobertura inteligente</div>
-                    </div>
-                </div>
-
-                <div class="feature-card roles">
-                    <span class="feature-icon">👥</span>
-                    <h3>Roles Especializados</h3>
-                    <p>Cada jugador asume un rol único con habilidades, equipamiento y responsabilidades específicas. La interdependencia entre roles es fundamental para el éxito del equipo.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Teams</span>
-                        <span class="tech-tag">UserInput</span>
-                        <span class="tech-tag">Badges</span>
-                    </div>
-                    <div class="feature-details">
-                        <div class="feature-detail">• 🎒 Scavenger: Exploración y recursos</div>
-                        <div class="feature-detail">• 🔧 Tech: Construcción y tecnología</div>
-                        <div class="feature-detail">• 🏥 Medic: Curación y supervivencia</div>
-                        <div class="feature-detail">• Habilidades únicas e interdependientes</div>
-                    </div>
-                </div>
-
-                <div class="feature-card ui">
-                    <span class="feature-icon">💻</span>
-                    <h3>Interface Avanzada</h3>
-                    <p>UI moderna y funcional con elementos específicos para trabajo en equipo. HUD adaptativo según el rol, inventario compartido y sistemas de comunicación integrados.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">ScreenGui</span>
-                        <span class="tech-tag">TweenService</span>
-                        <span class="tech-tag">UserInputService</span>
-                    </div>
-                    <div class="feature-details">
-                        <div class="feature-detail">• HUD específico por especialización</div>
-                        <div class="feature-detail">• Comunicación visual entre equipo</div>
-                        <div class="feature-detail">• Inventory compartido inteligente</div>
-                        <div class="feature-detail">• Objetivos cooperativos en tiempo real</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sección de equipos -->
-        <div class="teams-section">
-            <div class="teams-header">
-                <h2>👥 Equipos Formados</h2>
-                <p>Clanes activos en el mundo post-apocalíptico</p>
-            </div>
-            
-            <div class="teams-grid">
-                <div class="team-card">
-                    <div class="team-banner" style="background: linear-gradient(45deg, #ff6b6b, #ffa500);">
-                        <span class="team-flag">🔥</span>
-                    </div>
-                    <div class="team-info">
-                        <h3>🏆 Alpha Survivors</h3>
-                        <div class="team-members">
-                            <span class="member scavenger">🎒 Scavenger_Pro</span>
-                            <span class="member tech">🔧 Tech_Master</span>
-                            <span class="member medic">🏥 Medic_Elite</span>
-                        </div>
-                        <div class="team-stats">
-                            <div class="stat-item">
-                                <strong>Nivel:</strong> <span
+</html>
+                
